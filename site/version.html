@@ -1,0 +1,1637 @@
+﻿
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Anill Maraj">
+      
+      
+      
+        <link rel="prev" href="create.html">
+      
+      
+        <link rel="next" href="modify.html">
+      
+      <link rel="icon" href="assets/img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.12">
+    
+    
+      
+        <title>2. Version Control - BCMSL React DevOps Guidelines</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.85bb2934.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.a6bdf11c.min.css">
+      
+      
+  
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+  
+  <style>:root{--md-admonition-icon--note:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M1 7.775V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 0 1 0 2.474l-5.026 5.026a1.75 1.75 0 0 1-2.474 0l-6.25-6.25A1.752 1.752 0 0 1 1 7.775Zm1.5 0c0 .066.026.13.073.177l6.25 6.25a.25.25 0 0 0 .354 0l5.025-5.025a.25.25 0 0 0 0-.354l-6.25-6.25a.25.25 0 0 0-.177-.073H2.75a.25.25 0 0 0-.25.25ZM6 5a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z"/></svg>');--md-admonition-icon--abstract:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M2.5 1.75v11.5c0 .138.112.25.25.25h3.17a.75.75 0 0 1 0 1.5H2.75A1.75 1.75 0 0 1 1 13.25V1.75C1 .784 1.784 0 2.75 0h8.5C12.216 0 13 .784 13 1.75v7.736a.75.75 0 0 1-1.5 0V1.75a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13.274 9.537v-.001l-4.557 4.45a.75.75 0 0 1-1.055-.008l-1.943-1.95a.75.75 0 0 1 1.062-1.058l1.419 1.425 4.026-3.932a.75.75 0 1 1 1.048 1.074ZM4.75 4h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM4 7.75A.75.75 0 0 1 4.75 7h2a.75.75 0 0 1 0 1.5h-2A.75.75 0 0 1 4 7.75Z"/></svg>');--md-admonition-icon--info:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"/></svg>');--md-admonition-icon--tip:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M3.499.75a.75.75 0 0 1 1.5 0v.996C5.9 2.903 6.793 3.65 7.662 4.376l.24.202c-.036-.694.055-1.422.426-2.163C9.1.873 10.794-.045 12.622.26 14.408.558 16 1.94 16 4.25c0 1.278-.954 2.575-2.44 2.734l.146.508.065.22c.203.701.412 1.455.476 2.226.142 1.707-.4 3.03-1.487 3.898C11.714 14.671 10.27 15 8.75 15h-6a.75.75 0 0 1 0-1.5h1.376a4.484 4.484 0 0 1-.563-1.191 3.835 3.835 0 0 1-.05-2.063 4.647 4.647 0 0 1-2.025-.293.75.75 0 0 1 .525-1.406c1.357.507 2.376-.006 2.698-.318l.009-.01a.747.747 0 0 1 1.06 0 .748.748 0 0 1-.012 1.074c-.912.92-.992 1.835-.768 2.586.221.74.745 1.337 1.196 1.621H8.75c1.343 0 2.398-.296 3.074-.836.635-.507 1.036-1.31.928-2.602-.05-.603-.216-1.224-.422-1.93l-.064-.221c-.12-.407-.246-.84-.353-1.29a2.425 2.425 0 0 1-.507-.441 3.075 3.075 0 0 1-.633-1.248.75.75 0 0 1 1.455-.364c.046.185.144.436.31.627.146.168.353.305.712.305.738 0 1.25-.615 1.25-1.25 0-1.47-.95-2.315-2.123-2.51-1.172-.196-2.227.387-2.706 1.345-.46.92-.27 1.774.019 3.062l.042.19a.884.884 0 0 1 .01.05c.348.443.666.949.94 1.553a.75.75 0 1 1-1.365.62c-.553-1.217-1.32-1.94-2.3-2.768L6.7 5.527c-.814-.68-1.75-1.462-2.692-2.619a3.737 3.737 0 0 0-1.023.88c-.406.495-.663 1.036-.722 1.508.116.122.306.21.591.239.388.038.797-.06 1.032-.19a.75.75 0 0 1 .728 1.31c-.515.287-1.23.439-1.906.373-.682-.067-1.473-.38-1.879-1.193L.75 5.677V5.5c0-.984.48-1.94 1.077-2.664.46-.559 1.05-1.055 1.673-1.353V.75Z"/></svg>');--md-admonition-icon--success:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="m11.28 3.22 4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734L13.94 8l-3.72-3.72a.749.749 0 0 1 .326-1.275.749.749 0 0 1 .734.215Zm-6.56 0a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042L2.06 8l3.72 3.72a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L.47 8.53a.75.75 0 0 1 0-1.06Z"/></svg>');--md-admonition-icon--question:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.92 6.085h.001a.749.749 0 1 1-1.342-.67c.169-.339.436-.701.849-.977C6.845 4.16 7.369 4 8 4a2.756 2.756 0 0 1 1.637.525c.503.377.863.965.863 1.725 0 .448-.115.83-.329 1.15-.205.307-.47.513-.692.662-.109.072-.22.138-.313.195l-.006.004a6.24 6.24 0 0 0-.26.16.952.952 0 0 0-.276.245.75.75 0 0 1-1.248-.832c.184-.264.42-.489.692-.661.103-.067.207-.132.313-.195l.007-.004c.1-.061.182-.11.258-.161a.969.969 0 0 0 .277-.245C8.96 6.514 9 6.427 9 6.25a.612.612 0 0 0-.262-.525A1.27 1.27 0 0 0 8 5.5c-.369 0-.595.09-.74.187a1.01 1.01 0 0 0-.34.398ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"/></svg>');--md-admonition-icon--warning:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"/></svg>');--md-admonition-icon--failure:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M2.344 2.343h-.001a8 8 0 0 1 11.314 11.314A8.002 8.002 0 0 1 .234 10.089a8 8 0 0 1 2.11-7.746Zm1.06 10.253a6.5 6.5 0 1 0 9.108-9.275 6.5 6.5 0 0 0-9.108 9.275ZM6.03 4.97 8 6.94l1.97-1.97a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l1.97 1.97a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-1.97 1.97a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734L6.94 8 4.97 6.03a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018Z"/></svg>');--md-admonition-icon--danger:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M9.504.43a1.516 1.516 0 0 1 2.437 1.713L10.415 5.5h2.123c1.57 0 2.346 1.909 1.22 3.004l-7.34 7.142a1.249 1.249 0 0 1-.871.354h-.302a1.25 1.25 0 0 1-1.157-1.723L5.633 10.5H3.462c-1.57 0-2.346-1.909-1.22-3.004L9.503.429Zm1.047 1.074L3.286 8.571A.25.25 0 0 0 3.462 9H6.75a.75.75 0 0 1 .694 1.034l-1.713 4.188 6.982-6.793A.25.25 0 0 0 12.538 7H9.25a.75.75 0 0 1-.683-1.06l2.008-4.418.003-.006a.036.036 0 0 0-.004-.009l-.006-.006-.008-.001c-.003 0-.006.002-.009.004Z"/></svg>');--md-admonition-icon--bug:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M4.72.22a.75.75 0 0 1 1.06 0l1 .999a3.488 3.488 0 0 1 2.441 0l.999-1a.748.748 0 0 1 1.265.332.75.75 0 0 1-.205.729l-.775.776c.616.63.995 1.493.995 2.444v.327c0 .1-.009.197-.025.292.408.14.764.392 1.029.722l1.968-.787a.75.75 0 0 1 .556 1.392L13 7.258V9h2.25a.75.75 0 0 1 0 1.5H13v.5c0 .409-.049.806-.141 1.186l2.17.868a.75.75 0 0 1-.557 1.392l-2.184-.873A4.997 4.997 0 0 1 8 16a4.997 4.997 0 0 1-4.288-2.427l-2.183.873a.75.75 0 0 1-.558-1.392l2.17-.868A5.036 5.036 0 0 1 3 11v-.5H.75a.75.75 0 0 1 0-1.5H3V7.258L.971 6.446a.75.75 0 0 1 .558-1.392l1.967.787c.265-.33.62-.583 1.03-.722a1.677 1.677 0 0 1-.026-.292V4.5c0-.951.38-1.814.995-2.444L4.72 1.28a.75.75 0 0 1 0-1.06Zm.53 6.28a.75.75 0 0 0-.75.75V11a3.5 3.5 0 1 0 7 0V7.25a.75.75 0 0 0-.75-.75ZM6.173 5h3.654A.172.172 0 0 0 10 4.827V4.5a2 2 0 1 0-4 0v.327c0 .096.077.173.173.173Z"/></svg>');--md-admonition-icon--example:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M5 5.782V2.5h-.25a.75.75 0 0 1 0-1.5h6.5a.75.75 0 0 1 0 1.5H11v3.282l3.666 5.76C15.619 13.04 14.543 15 12.767 15H3.233c-1.776 0-2.852-1.96-1.899-3.458Zm-2.4 6.565a.75.75 0 0 0 .633 1.153h9.534a.75.75 0 0 0 .633-1.153L12.225 10.5h-8.45ZM9.5 2.5h-3V6c0 .143-.04.283-.117.403L4.73 9h6.54L9.617 6.403A.746.746 0 0 1 9.5 6Z"/></svg>');--md-admonition-icon--quote:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M1.75 2.5h10.5a.75.75 0 0 1 0 1.5H1.75a.75.75 0 0 1 0-1.5Zm4 5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5Zm0 5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5ZM2.5 7.75v6a.75.75 0 0 1-1.5 0v-6a.75.75 0 0 1 1.5 0Z"/></svg>');}</style>
+
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i%7CInconsolata:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Open Sans";--md-code-font:"Inconsolata"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="css/timeago.css">
+    
+      <link rel="stylesheet" href="assets/css/main.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#2-version-control" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="https://bluecoconut.ltd" title="BCMSL React DevOps Guidelines" class="md-header__button md-logo" aria-label="BCMSL React DevOps Guidelines" data-md-component="logo">
+      
+  <img src="assets/img/BCMSL LOGO LIGHT ICON.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            BCMSL React DevOps Guidelines
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              2. Version Control
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+          
+            
+            
+            
+            <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+            
+              <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_2" hidden>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+              </label>
+            
+          
+            
+            
+            
+            <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="BCMSL_LIGHT" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_2">
+            
+              <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+              </label>
+            
+          
+        </form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/bluecoconutltd/BCMSL_DevOps_Guidelines" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    bluecoconutltd/BCMSL_DevOps_Guidelines
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://bluecoconut.ltd" title="BCMSL React DevOps Guidelines" class="md-nav__button md-logo" aria-label="BCMSL React DevOps Guidelines" data-md-component="logo">
+      
+  <img src="assets/img/BCMSL LOGO LIGHT ICON.svg" alt="logo">
+
+    </a>
+    BCMSL React DevOps Guidelines
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/bluecoconutltd/BCMSL_DevOps_Guidelines" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    bluecoconutltd/BCMSL_DevOps_Guidelines
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        Guidelines
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="required.html" class="md-nav__link">
+        0. Requirements
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="create.html" class="md-nav__link">
+        1. Create Project
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          2. Version Control
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="version.html" class="md-nav__link md-nav__link--active">
+        2. Version Control
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#21-working-with-github" class="md-nav__link">
+    2.1 Working with GitHub
+  </a>
+  
+    <nav class="md-nav" aria-label="2.1 Working with GitHub">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#accessing-the-private-github-repository" class="md-nav__link">
+    Accessing the (Private) GitHub Repository
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#22-updating-git-configuration" class="md-nav__link">
+    2.2 Updating Git Configuration
+  </a>
+  
+    <nav class="md-nav" aria-label="2.2 Updating Git Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#updating-the-gitignore-file" class="md-nav__link">
+    Updating the .gitignore file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#23-creating-changelog" class="md-nav__link">
+    2.3 Creating Changelog
+  </a>
+  
+    <nav class="md-nav" aria-label="2.3 Creating Changelog">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-changelog-using-release-it-commitlint" class="md-nav__link">
+    Create Changelog using Release-It &amp; CommitLint
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="modify.html" class="md-nav__link">
+        3. Modify Project
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="view.html" class="md-nav__link">
+        4. View Project
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="build.html" class="md-nav__link">
+        5. Build Project
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference.html" class="md-nav__link">
+        6. References
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="license.html" class="md-nav__link">
+        License
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="notes.html" class="md-nav__link">
+        Notes
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="changelog.html" class="md-nav__link">
+        Changelog
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+
+                  
+
+  
+    <a href="https://github.com/bluecoconutltd/BCMSL_DevOps_Guidelines/edit/main/docs/version.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="2-version-control">2. Version Control</h1>
+<h2 id="21-working-with-github">2.1 Working with GitHub</h2>
+<h3 id="accessing-the-private-github-repository"><strong>Accessing the (Private) GitHub Repository</strong></h3>
+<p>After successfully <a href="create.html">Creating the Project Template</a>, the lead developer at <a href="https://bluecoconut.ltd">Blue Coconut Multimedia Solutions Limited</a> would in most instances create and provide a private <a href="https://github.com/">Github</a> Repository to work from. In this step we continue by accessing the repository, then setting up an automatically updating changelog.</p>
+<ul>
+<li>
+<p><strong>2.1.1</strong> - Login to <a href="https://github.com/">Github</a> and navigate the cursor to the upper-right corner of any page and click the <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M8 16a2 2 0 0 0 1.985-1.75c.017-.137-.097-.25-.235-.25h-3.5c-.138 0-.252.113-.235.25A2 2 0 0 0 8 16ZM3 5a5 5 0 0 1 10 0v2.947c0 .05.015.098.042.139l1.703 2.555A1.519 1.519 0 0 1 13.482 13H2.518a1.516 1.516 0 0 1-1.263-2.36l1.703-2.554A.255.255 0 0 0 3 7.947Zm5-3.5A3.5 3.5 0 0 0 4.5 5v2.947c0 .346-.102.683-.294.97l-1.703 2.556a.017.017 0 0 0-.003.01l.001.006c0 .002.002.004.004.006l.006.004.007.001h10.964l.007-.001.006-.004.004-.006.001-.007a.017.017 0 0 0-.003-.01l-1.703-2.554a1.745 1.745 0 0 1-.294-.97V5A3.5 3.5 0 0 0 8 1.5Z"/></svg></span> notification icon to open the notifications page.<br />
+<a class="glightbox" href="assets/img/screenshots/Preview211.webp" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Preview211" src="assets/img/screenshots/Preview211.webp" title="click to enlarge" width="600" /></a></p>
+</li>
+<li>
+<p><strong>2.1.2</strong> - Select the Collaborator Request in the notifications list and click <span class="keys"><kbd>Accept Invitation</kbd></span><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.64 21.97a.99.99 0 0 1-1.33-.47l-2.18-4.74-2.51 2.02c-.17.14-.38.22-.62.22a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1c.24 0 .47.09.64.23l.01-.01 11.49 9.64a1.001 1.001 0 0 1-.44 1.75l-3.16.62 2.2 4.73c.26.5.02 1.09-.48 1.32l-3.62 1.69Z"/></svg></span> to view the assigned <a href="https://github.com/">Github</a> repository.<br />
+<a class="glightbox" href="assets/img/screenshots/Preview212.webp" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Preview212" src="assets/img/screenshots/Preview212.webp" title="click to enlarge" width="600" /></a></p>
+</li>
+<li>
+<p><strong>2.1.3</strong> - Please follow the Rules and Policies of the repository to avoid any issues.</p>
+</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title"><strong>IMPORTANT NOTE: Developers require an Authenticated <a href="https://github.com/">Github</a> Account and  Repository!</strong></p>
+<ul>
+<li>
+<p>Click <strong><a href="create.html">HERE</a></strong> and Follow these steps if <strong>NO</strong> <a href="https://github.com/">Github</a> repository exists!</p>
+</li>
+<li>
+<p><strong>All GitHub Push Requests (Releases, Tags and Commits) MUST be verified!</strong></p>
+</li>
+</ul>
+</div>
+<hr />
+<h2 id="22-updating-git-configuration">2.2 Updating Git Configuration</h2>
+<h3 id="updating-the-gitignore-file"><strong>Updating the .gitignore file</strong></h3>
+<ul>
+<li>
+<p><strong>2.2.1</strong> - To prevent uploading the documentation builds and the files contained inside it to the repository, add <code>/site</code> to your <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 9V3.5L18.5 9M6 2c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6H6Z"/></svg></span><code>.gitignore</code> file in the root directory of your project or simply run this command in the <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M2.6 10.59 8.38 4.8l1.69 1.7c-.24.85.15 1.78.93 2.23v5.54c-.6.34-1 .99-1 1.73a2 2 0 0 0 2 2 2 2 0 0 0 2-2c0-.74-.4-1.39-1-1.73V9.41l2.07 2.09c-.07.15-.07.32-.07.5a2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2c-.18 0-.35 0-.5.07L13.93 7.5a1.98 1.98 0 0 0-1.15-2.34c-.43-.16-.88-.2-1.28-.09L9.8 3.38l.79-.78c.78-.79 2.04-.79 2.82 0l7.99 7.99c.79.78.79 2.04 0 2.82l-7.99 7.99c-.78.79-2.04.79-2.82 0L2.6 13.41c-.79-.78-.79-2.04 0-2.82Z"/></svg></span> <code>Git Bash</code> Terminal:  </p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;site/&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>.gitignore<span class="w">  </span>
+</code></pre></div>
+</li>
+</ul>
+<hr />
+<h2 id="23-creating-changelog">2.3 Creating Changelog</h2>
+<h3 id="create-changelog-using-release-it-commitlint"><strong>Create Changelog using Release-It &amp; CommitLint</strong></h3>
+<ul>
+<li>
+<p><strong>2.3.1</strong> - In the <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.83 4c.49 0 .8.4.67.89l-3.16 14.22c-.11.49-.59.89-1.08.89H2.17c-.49 0-.8-.4-.67-.89L4.66 4.89C4.77 4.4 5.25 4 5.74 4h16.09m-6 12h-4c-.46 0-.83.38-.83.84 0 .47.37.85.83.85h4c.47 0 .85-.38.85-.85 0-.46-.38-.84-.85-.84m-10.05.28a.87.87 0 0 0-.21 1.22c.28.42.84.5 1.24.23 7.35-5.17 7.4-5.23 7.45-5.26.18-.16.27-.38.28-.6.01-.2-.04-.37-.16-.56L9.46 6.03A.867.867 0 0 0 8.21 6c-.36.32-.38.88-.05 1.24l4.15 4.44-6.53 4.6Z"/></svg></span> PowerShell Terminal install <a href="https://www.npmjs.com/package/release-it">Release-It</a> by running:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">npm</span> <span class="n">init</span> <span class="n">release-it</span>  
+</code></pre></div>
+<ul>
+<li>Then run the following command in the <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.83 4c.49 0 .8.4.67.89l-3.16 14.22c-.11.49-.59.89-1.08.89H2.17c-.49 0-.8-.4-.67-.89L4.66 4.89C4.77 4.4 5.25 4 5.74 4h16.09m-6 12h-4c-.46 0-.83.38-.83.84 0 .47.37.85.83.85h4c.47 0 .85-.38.85-.85 0-.46-.38-.84-.85-.84m-10.05.28a.87.87 0 0 0-.21 1.22c.28.42.84.5 1.24.23 7.35-5.17 7.4-5.23 7.45-5.26.18-.16.27-.38.28-.6.01-.2-.04-.37-.16-.56L9.46 6.03A.867.867 0 0 0 8.21 6c-.36.32-.38.88-.05 1.24l4.15 4.44-6.53 4.6Z"/></svg></span> PowerShell Terminal to install the <a href="https://github.com/release-it/conventional-changelog">Conventional Changelog for Release-It</a> and <a href="https://www.npmjs.com/package/commitlint">CommitLint</a> plugins:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">npm</span> <span class="n">install</span> <span class="nv">@release</span><span class="n">-it</span><span class="p">/</span><span class="n">conventional-changelog</span> <span class="nv">@commitlint</span><span class="p">/</span><span class="n">config-conventional</span> <span class="nv">@commitlint</span><span class="p">/</span><span class="nb">cli </span><span class="p">-</span><span class="n">-include</span><span class="p">=</span><span class="n">dev</span> 
+</code></pre></div>
+<p><a class="glightbox" href="assets/img/screenshots/Preview241.webp" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Preview241" src="assets/img/screenshots/Preview241.webp" title="click to enlarge" width="600" /></a></p>
+</li>
+<li>
+<p><strong>2.3.2</strong> - Add the following configuration for <a href="https://www.npmjs.com/package/release-it">Release-It</a> in the <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 9V3.5L18.5 9M6 2c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6H6Z"/></svg></span><code>package.json</code> file:</p>
+<p><div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">package.json</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-3-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-3-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-3-10">10</a></span>
+<span class="normal"><a href="#__codelineno-3-11">11</a></span>
+<span class="normal"><a href="#__codelineno-3-12">12</a></span>
+<span class="normal"><a href="#__codelineno-3-13">13</a></span>
+<span class="normal"><a href="#__codelineno-3-14">14</a></span>
+<span class="normal"><a href="#__codelineno-3-15">15</a></span>
+<span class="normal"><a href="#__codelineno-3-16">16</a></span>
+<span class="normal"><a href="#__codelineno-3-17">17</a></span>
+<span class="normal"><a href="#__codelineno-3-18">18</a></span>
+<span class="normal"><a href="#__codelineno-3-19">19</a></span>
+<span class="normal"><a href="#__codelineno-3-20">20</a></span>
+<span class="normal"><a href="#__codelineno-3-21">21</a></span>
+<span class="normal"><a href="#__codelineno-3-22">22</a></span>
+<span class="normal"><a href="#__codelineno-3-23">23</a></span>
+<span class="normal"><a href="#__codelineno-3-24">24</a></span>
+<span class="normal"><a href="#__codelineno-3-25">25</a></span>
+<span class="normal"><a href="#__codelineno-3-26">26</a></span>
+<span class="normal"><a href="#__codelineno-3-27">27</a></span>
+<span class="normal"><a href="#__codelineno-3-28">28</a></span>
+<span class="normal"><a href="#__codelineno-3-29">29</a></span>
+<span class="normal"><a href="#__codelineno-3-30">30</a></span>
+<span class="normal"><a href="#__codelineno-3-31">31</a></span>
+<span class="normal"><a href="#__codelineno-3-32">32</a></span>
+<span class="normal"><a href="#__codelineno-3-33">33</a></span>
+<span class="normal"><a href="#__codelineno-3-34">34</a></span>
+<span class="normal"><a href="#__codelineno-3-35">35</a></span>
+<span class="normal"><a href="#__codelineno-3-36">36</a></span>
+<span class="normal"><a href="#__codelineno-3-37">37</a></span>
+<span class="normal"><a href="#__codelineno-3-38">38</a></span>
+<span class="normal"><a href="#__codelineno-3-39">39</a></span>
+<span class="normal"><a href="#__codelineno-3-40">40</a></span>
+<span class="normal"><a href="#__codelineno-3-41">41</a></span>
+<span class="normal"><a href="#__codelineno-3-42">42</a></span>
+<span class="normal"><a href="#__codelineno-3-43">43</a></span>
+<span class="normal"><a href="#__codelineno-3-44">44</a></span>
+<span class="normal"><a href="#__codelineno-3-45">45</a></span>
+<span class="normal"><a href="#__codelineno-3-46">46</a></span>
+<span class="normal"><a href="#__codelineno-3-47">47</a></span>
+<span class="normal"><a href="#__codelineno-3-48">48</a></span>
+<span class="normal"><a href="#__codelineno-3-49">49</a></span>
+<span class="normal"><a href="#__codelineno-3-50">50</a></span>
+<span class="normal"><a href="#__codelineno-3-51">51</a></span>
+<span class="normal"><a href="#__codelineno-3-52">52</a></span>
+<span class="normal"><a href="#__codelineno-3-53">53</a></span>
+<span class="normal"><a href="#__codelineno-3-54">54</a></span>
+<span class="normal"><a href="#__codelineno-3-55">55</a></span>
+<span class="normal"><a href="#__codelineno-3-56">56</a></span>
+<span class="normal"><a href="#__codelineno-3-57">57</a></span>
+<span class="normal"><a href="#__codelineno-3-58">58</a></span>
+<span class="normal"><a href="#__codelineno-3-59">59</a></span>
+<span class="normal"><a href="#__codelineno-3-60">60</a></span>
+<span class="normal"><a href="#__codelineno-3-61">61</a></span>
+<span class="normal"><a href="#__codelineno-3-62">62</a></span>
+<span class="normal"><a href="#__codelineno-3-63">63</a></span>
+<span class="normal"><a href="#__codelineno-3-64">64</a></span>
+<span class="normal"><a href="#__codelineno-3-65">65</a></span>
+<span class="normal"><a href="#__codelineno-3-66">66</a></span>
+<span class="normal"><a href="#__codelineno-3-67">67</a></span>
+<span class="normal"><a href="#__codelineno-3-68">68</a></span>
+<span class="normal"><a href="#__codelineno-3-69">69</a></span>
+<span class="normal"><a href="#__codelineno-3-70">70</a></span>
+<span class="normal"><a href="#__codelineno-3-71">71</a></span>
+<span class="normal"><a href="#__codelineno-3-72">72</a></span>
+<span class="normal"><a href="#__codelineno-3-73">73</a></span>
+<span class="normal"><a href="#__codelineno-3-74">74</a></span>
+<span class="normal"><a href="#__codelineno-3-75">75</a></span>
+<span class="normal"><a href="#__codelineno-3-76">76</a></span>
+<span class="normal"><a href="#__codelineno-3-77">77</a></span>
+<span class="normal"><a href="#__codelineno-3-78">78</a></span>
+<span class="normal"><a href="#__codelineno-3-79">79</a></span>
+<span class="normal"><a href="#__codelineno-3-80">80</a></span>
+<span class="normal"><a href="#__codelineno-3-81">81</a></span>
+<span class="normal"><a href="#__codelineno-3-82">82</a></span>
+<span class="normal"><a href="#__codelineno-3-83">83</a></span>
+<span class="normal"><a href="#__codelineno-3-84">84</a></span>
+<span class="normal"><a href="#__codelineno-3-85">85</a></span>
+<span class="normal"><a href="#__codelineno-3-86">86</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="nt">&quot;scripts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8"></a><span class="w">  </span><span class="nt">&quot;release&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;release-it&quot;</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="p">},</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10"></a><span class="nt">&quot;release-it&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11"></a><span class="w">  </span><span class="nt">&quot;git&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12"></a><span class="w">    </span><span class="nt">&quot;requireCleanWorkingDir&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13"></a><span class="w">    </span><span class="nt">&quot;commitMessage&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;chore: Release v${version}&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14"></a><span class="w">    </span><span class="nt">&quot;tagName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;v${version}&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15"></a><span class="w">    </span><span class="nt">&quot;tagAnnotation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Release v${version}&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16"></a><span class="w">    </span><span class="nt">&quot;tagArgs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17"></a><span class="w">      </span><span class="s2">&quot;-s&quot;</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18"></a><span class="w">    </span><span class="p">],</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19"></a><span class="w">    </span><span class="nt">&quot;pushArgs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20"></a><span class="w">      </span><span class="s2">&quot;--follow-tags&quot;</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21"></a><span class="w">    </span><span class="p">]</span>
+<a id="__codelineno-3-22" name="__codelineno-3-22"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-3-23" name="__codelineno-3-23"></a><span class="w">  </span><span class="nt">&quot;github&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-24" name="__codelineno-3-24"></a><span class="w">    </span><span class="nt">&quot;release&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<a id="__codelineno-3-25" name="__codelineno-3-25"></a><span class="w">    </span><span class="nt">&quot;releaseName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Release ${version}&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-26" name="__codelineno-3-26"></a><span class="w">    </span><span class="nt">&quot;tokenRef&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GITHUB_TOKEN&quot;</span>
+<a id="__codelineno-3-27" name="__codelineno-3-27"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-3-28" name="__codelineno-3-28"></a><span class="w">  </span><span class="nt">&quot;npm&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-29" name="__codelineno-3-29"></a><span class="w">    </span><span class="nt">&quot;publish&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<a id="__codelineno-3-30" name="__codelineno-3-30"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-3-31" name="__codelineno-3-31"></a><span class="w">  </span><span class="nt">&quot;plugins&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-32" name="__codelineno-3-32"></a><span class="w">    </span><span class="nt">&quot;@release-it/conventional-changelog&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-33" name="__codelineno-3-33"></a><span class="w">      </span><span class="nt">&quot;infile&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;docs/changelog.md&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-34" name="__codelineno-3-34"></a><span class="w">      </span><span class="nt">&quot;preset&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-35" name="__codelineno-3-35"></a><span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;conventionalcommits&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-36" name="__codelineno-3-36"></a><span class="w">        </span><span class="nt">&quot;types&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-3-37" name="__codelineno-3-37"></a><span class="w">          </span><span class="p">{</span>
+<a id="__codelineno-3-38" name="__codelineno-3-38"></a><span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;add&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-39" name="__codelineno-3-39"></a><span class="w">        </span><span class="nt">&quot;section&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Added:&quot;</span>
+<a id="__codelineno-3-40" name="__codelineno-3-40"></a><span class="w">          </span><span class="p">},</span>
+<a id="__codelineno-3-41" name="__codelineno-3-41"></a><span class="w">          </span><span class="p">{</span>
+<a id="__codelineno-3-42" name="__codelineno-3-42"></a><span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;del&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-43" name="__codelineno-3-43"></a><span class="w">            </span><span class="nt">&quot;section&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Deleted:&quot;</span>
+<a id="__codelineno-3-44" name="__codelineno-3-44"></a><span class="w">          </span><span class="p">},</span>
+<a id="__codelineno-3-45" name="__codelineno-3-45"></a><span class="w">          </span><span class="p">{</span>
+<a id="__codelineno-3-46" name="__codelineno-3-46"></a><span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;deprec&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-47" name="__codelineno-3-47"></a><span class="w">            </span><span class="nt">&quot;section&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Deprecated:&quot;</span>
+<a id="__codelineno-3-48" name="__codelineno-3-48"></a><span class="w">          </span><span class="p">},</span>
+<a id="__codelineno-3-49" name="__codelineno-3-49"></a><span class="w">          </span><span class="p">{</span>
+<a id="__codelineno-3-50" name="__codelineno-3-50"></a><span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;docs&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-51" name="__codelineno-3-51"></a><span class="w">            </span><span class="nt">&quot;section&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Documentation:&quot;</span>
+<a id="__codelineno-3-52" name="__codelineno-3-52"></a><span class="w">          </span><span class="p">},</span>
+<a id="__codelineno-3-53" name="__codelineno-3-53"></a><span class="w">          </span><span class="p">{</span>
+<a id="__codelineno-3-54" name="__codelineno-3-54"></a><span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;feat&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-55" name="__codelineno-3-55"></a><span class="w">            </span><span class="nt">&quot;section&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Features:&quot;</span>
+<a id="__codelineno-3-56" name="__codelineno-3-56"></a><span class="w">          </span><span class="p">},</span>
+<a id="__codelineno-3-57" name="__codelineno-3-57"></a><span class="w">          </span><span class="p">{</span>
+<a id="__codelineno-3-58" name="__codelineno-3-58"></a><span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;fix&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-59" name="__codelineno-3-59"></a><span class="w">            </span><span class="nt">&quot;section&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Bug Fixes:&quot;</span>
+<a id="__codelineno-3-60" name="__codelineno-3-60"></a><span class="w">          </span><span class="p">},</span>
+<a id="__codelineno-3-61" name="__codelineno-3-61"></a><span class="w">          </span><span class="p">{</span>
+<a id="__codelineno-3-62" name="__codelineno-3-62"></a><span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;int&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-63" name="__codelineno-3-63"></a><span class="w">            </span><span class="nt">&quot;section&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Integrated:&quot;</span>
+<a id="__codelineno-3-64" name="__codelineno-3-64"></a><span class="w">          </span><span class="p">},</span>
+<a id="__codelineno-3-65" name="__codelineno-3-65"></a><span class="w">          </span><span class="p">{</span>
+<a id="__codelineno-3-66" name="__codelineno-3-66"></a><span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;renamed&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-67" name="__codelineno-3-67"></a><span class="w">            </span><span class="nt">&quot;section&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Renamed:&quot;</span>
+<a id="__codelineno-3-68" name="__codelineno-3-68"></a><span class="w">          </span><span class="p">},</span>
+<a id="__codelineno-3-69" name="__codelineno-3-69"></a><span class="w">          </span><span class="p">{</span>
+<a id="__codelineno-3-70" name="__codelineno-3-70"></a><span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;roll&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-71" name="__codelineno-3-71"></a><span class="w">            </span><span class="nt">&quot;section&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Rollback:&quot;</span>
+<a id="__codelineno-3-72" name="__codelineno-3-72"></a><span class="w">          </span><span class="p">},</span>
+<a id="__codelineno-3-73" name="__codelineno-3-73"></a><span class="w">          </span><span class="p">{</span>
+<a id="__codelineno-3-74" name="__codelineno-3-74"></a><span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;refactor&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-75" name="__codelineno-3-75"></a><span class="w">            </span><span class="nt">&quot;section&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Refactored:&quot;</span>
+<a id="__codelineno-3-76" name="__codelineno-3-76"></a><span class="w">          </span><span class="p">},</span>
+<a id="__codelineno-3-77" name="__codelineno-3-77"></a><span class="w">          </span><span class="p">{</span>
+<a id="__codelineno-3-78" name="__codelineno-3-78"></a><span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;update&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-79" name="__codelineno-3-79"></a><span class="w">            </span><span class="nt">&quot;section&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Updated:&quot;</span>
+<a id="__codelineno-3-80" name="__codelineno-3-80"></a><span class="w">          </span><span class="p">},</span>
+<a id="__codelineno-3-81" name="__codelineno-3-81"></a><span class="w">          </span><span class="p">{}</span>
+<a id="__codelineno-3-82" name="__codelineno-3-82"></a><span class="w">        </span><span class="p">]</span>
+<a id="__codelineno-3-83" name="__codelineno-3-83"></a><span class="w">      </span><span class="p">}</span>
+<a id="__codelineno-3-84" name="__codelineno-3-84"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-85" name="__codelineno-3-85"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-3-86" name="__codelineno-3-86"></a><span class="p">},</span>
+</code></pre></div></td></tr></table></div>
+  <a class="glightbox" href="assets/img/screenshots/Preview232.webp" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Preview232" src="assets/img/screenshots/Preview232.webp" title="click to enlarge" width="600" /></a></p>
+</li>
+</ul>
+<div class="admonition note-github">
+<p class="admonition-title"><a href="https://github.com/">GitHub</a> Reference: Review Source Code Application:</p>
+<p><em>Visit the <a href="https://github.com/codityco/001-add-a-changelog-to-any-project/blob/develop/package.json#L27">codityco - GitHub Repository</a> to view configuration of <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 9V3.5L18.5 9M6 2c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6H6Z"/></svg></span><code>package.json</code> file.</em>  </p>
+</div>
+<ul>
+<li>
+<p><strong>2.3.3</strong> - Take a note of the <code>"tagArgs": ["-s"]</code> in the <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 9V3.5L18.5 9M6 2c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6H6Z"/></svg></span><code>package.json</code> file, this is mandatory for pushing singed tags to <a href="https://github.com/bluecoconutltd">BCMSL GitHub</a> repositories making them <strong>verified</strong>:<br />
+<a class="glightbox" href="assets/img/screenshots/Preview233.webp" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Preview233" src="assets/img/screenshots/Preview233.webp" title="click to enlarge" width="600" /></a>  </p>
+</li>
+<li>
+<p><strong>2.3.4</strong> - Install <a href="https://www.npmjs.com/package/husky">Husky</a> from the <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.83 4c.49 0 .8.4.67.89l-3.16 14.22c-.11.49-.59.89-1.08.89H2.17c-.49 0-.8-.4-.67-.89L4.66 4.89C4.77 4.4 5.25 4 5.74 4h16.09m-6 12h-4c-.46 0-.83.38-.83.84 0 .47.37.85.83.85h4c.47 0 .85-.38.85-.85 0-.46-.38-.84-.85-.84m-10.05.28a.87.87 0 0 0-.21 1.22c.28.42.84.5 1.24.23 7.35-5.17 7.4-5.23 7.45-5.26.18-.16.27-.38.28-.6.01-.2-.04-.37-.16-.56L9.46 6.03A.867.867 0 0 0 8.21 6c-.36.32-.38.88-.05 1.24l4.15 4.44-6.53 4.6Z"/></svg></span> PowerShell Terminal by running the command:</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">npm</span> <span class="n">install</span> <span class="n">husky</span> <span class="p">-</span><span class="n">-include</span><span class="p">=</span><span class="n">dev</span> 
+</code></pre></div>
+  <a class="glightbox" href="assets/img/screenshots/Preview234.webp" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Preview234" src="assets/img/screenshots/Preview234.webp" title="click to enlarge" width="600" /></a></p>
+</li>
+<li>
+<p><strong>2.3.5</strong> - To add the the hooks that will allow the developer to run commands based off <a href="https://docs.github.com/en/actions">Git Actions</a>, initialize a scheme by running the the following command from the <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.83 4c.49 0 .8.4.67.89l-3.16 14.22c-.11.49-.59.89-1.08.89H2.17c-.49 0-.8-.4-.67-.89L4.66 4.89C4.77 4.4 5.25 4 5.74 4h16.09m-6 12h-4c-.46 0-.83.38-.83.84 0 .47.37.85.83.85h4c.47 0 .85-.38.85-.85 0-.46-.38-.84-.85-.84m-10.05.28a.87.87 0 0 0-.21 1.22c.28.42.84.5 1.24.23 7.35-5.17 7.4-5.23 7.45-5.26.18-.16.27-.38.28-.6.01-.2-.04-.37-.16-.56L9.46 6.03A.867.867 0 0 0 8.21 6c-.36.32-.38.88-.05 1.24l4.15 4.44-6.53 4.6Z"/></svg></span> PowerShell Terminal:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="p">./</span><span class="n">node_modules</span><span class="p">/</span><span class="n">husky</span><span class="p">/</span><span class="n">lib</span><span class="p">/</span><span class="n">bin</span><span class="p">.</span><span class="n">js</span> <span class="n">install</span> 
+</code></pre></div>
+</li>
+<li>
+<p><strong>2.3.6</strong> - Create a <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 9V3.5L18.5 9M6 2c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6H6Z"/></svg></span><code>commit-msg</code> file in the <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 4H4c-1.11 0-2 .89-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-8l-2-2Z"/></svg></span><code>node_modules/husky</code> folder then run the following in <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M2.6 10.59 8.38 4.8l1.69 1.7c-.24.85.15 1.78.93 2.23v5.54c-.6.34-1 .99-1 1.73a2 2 0 0 0 2 2 2 2 0 0 0 2-2c0-.74-.4-1.39-1-1.73V9.41l2.07 2.09c-.07.15-.07.32-.07.5a2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2c-.18 0-.35 0-.5.07L13.93 7.5a1.98 1.98 0 0 0-1.15-2.34c-.43-.16-.88-.2-1.28-.09L9.8 3.38l.79-.78c.78-.79 2.04-.79 2.82 0l7.99 7.99c.79.78.79 2.04 0 2.82l-7.99 7.99c-.78.79-2.04.79-2.82 0L2.6 13.41c-.79-.78-.79-2.04 0-2.82Z"/></svg></span> Git Bash Terminal:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>touch<span class="w"> </span>node_modules/husky/commit-msg<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>chmod<span class="w"> </span>a+x<span class="w"> </span>node_modules/husky/commit-msg<span class="w"> </span>
+</code></pre></div>
+</li>
+<li>
+<p><strong>2.3.7</strong> - Proceed to add the following to the <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 9V3.5L18.5 9M6 2c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6H6Z"/></svg></span><code>commit-msg</code> file.</p>
+<p><div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">commit-msg</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span>
+<span class="normal"><a href="#__codelineno-7-2">2</a></span>
+<span class="normal"><a href="#__codelineno-7-3">3</a></span>
+<span class="normal"><a href="#__codelineno-7-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="ch">#!/bin/sh</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a>.<span class="s2">&quot;</span><span class="si">${</span><span class="nv">dirname</span><span class="p"> </span><span class="s2">&quot;</span><span class="nv">$0</span><span class="s2">&quot;</span><span class="p">)/_/husky.sh</span><span class="s2">&quot;</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3"></a>
+<a id="__codelineno-7-4" name="__codelineno-7-4"></a><span class="s2">npx commitlint --edit</span>
+</code></pre></div></td></tr></table></div>
+  The above allows <a href="https://www.npmjs.com/package/husky">Husky</a> to run <a href="https://www.npmjs.com/package/commitlint">CommitLint</a> so it can check the commit messages and run on the commit command.<br />
+<a class="glightbox" href="assets/img/screenshots/Preview237.webp" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Preview237" src="assets/img/screenshots/Preview237.webp" title="click to enlarge" width="400" /></a></p>
+</li>
+<li>
+<p><strong>2.3.8</strong> - Create a <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 9V3.5L18.5 9M6 2c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6H6Z"/></svg></span><code>changelog.md</code> file in the <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 4H4c-1.11 0-2 .89-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-8l-2-2Z"/></svg></span><code>docs</code> folder and enter the following information:</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">changelog.md</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-8-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-8-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-8-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-8-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-8-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-8-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-8-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-8-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-8-10">10</a></span>
+<span class="normal"><a href="#__codelineno-8-11">11</a></span>
+<span class="normal"><a href="#__codelineno-8-12">12</a></span>
+<span class="normal"><a href="#__codelineno-8-13">13</a></span>
+<span class="normal"><a href="#__codelineno-8-14">14</a></span>
+<span class="normal"><a href="#__codelineno-8-15">15</a></span>
+<span class="normal"><a href="#__codelineno-8-16">16</a></span>
+<span class="normal"><a href="#__codelineno-8-17">17</a></span>
+<span class="normal"><a href="#__codelineno-8-18">18</a></span>
+<span class="normal"><a href="#__codelineno-8-19">19</a></span>
+<span class="normal"><a href="#__codelineno-8-20">20</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a>  # [<span class="gs">**:material-github::material-file-document-alert-outline:**</span>](https://github.com/bluecoconutltd/BCMSL_DEV_Guidelines/blob/main/docs/changelog.md)
+<a id="__codelineno-8-2" name="__codelineno-8-2"></a>
+<a id="__codelineno-8-3" name="__codelineno-8-3"></a>  ***
+<a id="__codelineno-8-4" name="__codelineno-8-4"></a>
+<a id="__codelineno-8-5" name="__codelineno-8-5"></a>  ## <span class="gs">**:material-menu-up-outline:**</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6"></a>
+<a id="__codelineno-8-7" name="__codelineno-8-7"></a>  ### <span class="gs">**CHANGELOG :material-text-long:**</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8"></a>
+<a id="__codelineno-8-9" name="__codelineno-8-9"></a>  #### [<span class="nt">Verified Release :octicons-verified-16:</span>](<span class="na">https://github.com/bluecoconutltd/BCMSL_DEV_Guidelines/tags</span>)
+<a id="__codelineno-8-10" name="__codelineno-8-10"></a>
+<a id="__codelineno-8-11" name="__codelineno-8-11"></a>  !!! note-license inline &quot;License Notice&quot;
+<a id="__codelineno-8-12" name="__codelineno-8-12"></a>
+<a id="__codelineno-8-13" name="__codelineno-8-13"></a>      [<span class="nt">Blue Coconut Multimedia Solutions Limited</span>](<span class="na">https://bluecoconut.ltd</span>)  
+<a id="__codelineno-8-14" name="__codelineno-8-14"></a>      52A Eccles Road, Grand Lagoon,  
+<a id="__codelineno-8-15" name="__codelineno-8-15"></a>      Mayaro, Trinidad and Tobago, W.I.  
+<a id="__codelineno-8-16" name="__codelineno-8-16"></a>      &lt;info@bluecoconut.ltd&gt;  
+<a id="__codelineno-8-17" name="__codelineno-8-17"></a>      --------------------------
+<a id="__codelineno-8-18" name="__codelineno-8-18"></a>      All Rights Reserved under the:  
+<a id="__codelineno-8-19" name="__codelineno-8-19"></a>      [<span class="nt">MIT License (2023)</span>](<span class="na">license.md</span>)  
+<a id="__codelineno-8-20" name="__codelineno-8-20"></a>      ![<span class="nt">BCMSL</span>](<span class="na">assets/img/BCMSL LOGO DARK.svg#only-light</span>){ width=&quot;50px&quot; } ![<span class="nt">BCMSL</span>](<span class="na">assets/img/BCMSL LOGO LIGHT.svg#only-dark</span>){ width=&quot;50px&quot; }
+</code></pre></div></td></tr></table></div>
+</li>
+<li>
+<p><strong>2.3.9</strong> - If not already existing, Add the following configuration data to the <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 9V3.5L18.5 9M6 2c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6H6Z"/></svg></span><code>mkdocs.yaml</code> file in the root directory ensuring it follows proper yaml formatting and save the changes.</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">mkdocs.yaml</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">  1</a></span>
+<span class="normal"><a href="#__codelineno-9-2">  2</a></span>
+<span class="normal"><a href="#__codelineno-9-3">  3</a></span>
+<span class="normal"><a href="#__codelineno-9-4">  4</a></span>
+<span class="normal"><a href="#__codelineno-9-5">  5</a></span>
+<span class="normal"><a href="#__codelineno-9-6">  6</a></span>
+<span class="normal"><a href="#__codelineno-9-7">  7</a></span>
+<span class="normal"><a href="#__codelineno-9-8">  8</a></span>
+<span class="normal"><a href="#__codelineno-9-9">  9</a></span>
+<span class="normal"><a href="#__codelineno-9-10"> 10</a></span>
+<span class="normal"><a href="#__codelineno-9-11"> 11</a></span>
+<span class="normal"><a href="#__codelineno-9-12"> 12</a></span>
+<span class="normal"><a href="#__codelineno-9-13"> 13</a></span>
+<span class="normal"><a href="#__codelineno-9-14"> 14</a></span>
+<span class="normal"><a href="#__codelineno-9-15"> 15</a></span>
+<span class="normal"><a href="#__codelineno-9-16"> 16</a></span>
+<span class="normal"><a href="#__codelineno-9-17"> 17</a></span>
+<span class="normal"><a href="#__codelineno-9-18"> 18</a></span>
+<span class="normal"><a href="#__codelineno-9-19"> 19</a></span>
+<span class="normal"><a href="#__codelineno-9-20"> 20</a></span>
+<span class="normal"><a href="#__codelineno-9-21"> 21</a></span>
+<span class="normal"><a href="#__codelineno-9-22"> 22</a></span>
+<span class="normal"><a href="#__codelineno-9-23"> 23</a></span>
+<span class="normal"><a href="#__codelineno-9-24"> 24</a></span>
+<span class="normal"><a href="#__codelineno-9-25"> 25</a></span>
+<span class="normal"><a href="#__codelineno-9-26"> 26</a></span>
+<span class="normal"><a href="#__codelineno-9-27"> 27</a></span>
+<span class="normal"><a href="#__codelineno-9-28"> 28</a></span>
+<span class="normal"><a href="#__codelineno-9-29"> 29</a></span>
+<span class="normal"><a href="#__codelineno-9-30"> 30</a></span>
+<span class="normal"><a href="#__codelineno-9-31"> 31</a></span>
+<span class="normal"><a href="#__codelineno-9-32"> 32</a></span>
+<span class="normal"><a href="#__codelineno-9-33"> 33</a></span>
+<span class="normal"><a href="#__codelineno-9-34"> 34</a></span>
+<span class="normal"><a href="#__codelineno-9-35"> 35</a></span>
+<span class="normal"><a href="#__codelineno-9-36"> 36</a></span>
+<span class="normal"><a href="#__codelineno-9-37"> 37</a></span>
+<span class="normal"><a href="#__codelineno-9-38"> 38</a></span>
+<span class="normal"><a href="#__codelineno-9-39"> 39</a></span>
+<span class="normal"><a href="#__codelineno-9-40"> 40</a></span>
+<span class="normal"><a href="#__codelineno-9-41"> 41</a></span>
+<span class="normal"><a href="#__codelineno-9-42"> 42</a></span>
+<span class="normal"><a href="#__codelineno-9-43"> 43</a></span>
+<span class="normal"><a href="#__codelineno-9-44"> 44</a></span>
+<span class="normal"><a href="#__codelineno-9-45"> 45</a></span>
+<span class="normal"><a href="#__codelineno-9-46"> 46</a></span>
+<span class="normal"><a href="#__codelineno-9-47"> 47</a></span>
+<span class="normal"><a href="#__codelineno-9-48"> 48</a></span>
+<span class="normal"><a href="#__codelineno-9-49"> 49</a></span>
+<span class="normal"><a href="#__codelineno-9-50"> 50</a></span>
+<span class="normal"><a href="#__codelineno-9-51"> 51</a></span>
+<span class="normal"><a href="#__codelineno-9-52"> 52</a></span>
+<span class="normal"><a href="#__codelineno-9-53"> 53</a></span>
+<span class="normal"><a href="#__codelineno-9-54"> 54</a></span>
+<span class="normal"><a href="#__codelineno-9-55"> 55</a></span>
+<span class="normal"><a href="#__codelineno-9-56"> 56</a></span>
+<span class="normal"><a href="#__codelineno-9-57"> 57</a></span>
+<span class="normal"><a href="#__codelineno-9-58"> 58</a></span>
+<span class="normal"><a href="#__codelineno-9-59"> 59</a></span>
+<span class="normal"><a href="#__codelineno-9-60"> 60</a></span>
+<span class="normal"><a href="#__codelineno-9-61"> 61</a></span>
+<span class="normal"><a href="#__codelineno-9-62"> 62</a></span>
+<span class="normal"><a href="#__codelineno-9-63"> 63</a></span>
+<span class="normal"><a href="#__codelineno-9-64"> 64</a></span>
+<span class="normal"><a href="#__codelineno-9-65"> 65</a></span>
+<span class="normal"><a href="#__codelineno-9-66"> 66</a></span>
+<span class="normal"><a href="#__codelineno-9-67"> 67</a></span>
+<span class="normal"><a href="#__codelineno-9-68"> 68</a></span>
+<span class="normal"><a href="#__codelineno-9-69"> 69</a></span>
+<span class="normal"><a href="#__codelineno-9-70"> 70</a></span>
+<span class="normal"><a href="#__codelineno-9-71"> 71</a></span>
+<span class="normal"><a href="#__codelineno-9-72"> 72</a></span>
+<span class="normal"><a href="#__codelineno-9-73"> 73</a></span>
+<span class="normal"><a href="#__codelineno-9-74"> 74</a></span>
+<span class="normal"><a href="#__codelineno-9-75"> 75</a></span>
+<span class="normal"><a href="#__codelineno-9-76"> 76</a></span>
+<span class="normal"><a href="#__codelineno-9-77"> 77</a></span>
+<span class="normal"><a href="#__codelineno-9-78"> 78</a></span>
+<span class="normal"><a href="#__codelineno-9-79"> 79</a></span>
+<span class="normal"><a href="#__codelineno-9-80"> 80</a></span>
+<span class="normal"><a href="#__codelineno-9-81"> 81</a></span>
+<span class="normal"><a href="#__codelineno-9-82"> 82</a></span>
+<span class="normal"><a href="#__codelineno-9-83"> 83</a></span>
+<span class="normal"><a href="#__codelineno-9-84"> 84</a></span>
+<span class="normal"><a href="#__codelineno-9-85"> 85</a></span>
+<span class="normal"><a href="#__codelineno-9-86"> 86</a></span>
+<span class="normal"><a href="#__codelineno-9-87"> 87</a></span>
+<span class="normal"><a href="#__codelineno-9-88"> 88</a></span>
+<span class="normal"><a href="#__codelineno-9-89"> 89</a></span>
+<span class="normal"><a href="#__codelineno-9-90"> 90</a></span>
+<span class="normal"><a href="#__codelineno-9-91"> 91</a></span>
+<span class="normal"><a href="#__codelineno-9-92"> 92</a></span>
+<span class="normal"><a href="#__codelineno-9-93"> 93</a></span>
+<span class="normal"><a href="#__codelineno-9-94"> 94</a></span>
+<span class="normal"><a href="#__codelineno-9-95"> 95</a></span>
+<span class="normal"><a href="#__codelineno-9-96"> 96</a></span>
+<span class="normal"><a href="#__codelineno-9-97"> 97</a></span>
+<span class="normal"><a href="#__codelineno-9-98"> 98</a></span>
+<span class="normal"><a href="#__codelineno-9-99"> 99</a></span>
+<span class="normal"><a href="#__codelineno-9-100">100</a></span>
+<span class="normal"><a href="#__codelineno-9-101">101</a></span>
+<span class="normal"><a href="#__codelineno-9-102">102</a></span>
+<span class="normal"><a href="#__codelineno-9-103">103</a></span>
+<span class="normal"><a href="#__codelineno-9-104">104</a></span>
+<span class="normal"><a href="#__codelineno-9-105">105</a></span>
+<span class="normal"><a href="#__codelineno-9-106">106</a></span>
+<span class="normal"><a href="#__codelineno-9-107">107</a></span>
+<span class="normal"><a href="#__codelineno-9-108">108</a></span>
+<span class="normal"><a href="#__codelineno-9-109">109</a></span>
+<span class="normal"><a href="#__codelineno-9-110">110</a></span>
+<span class="normal"><a href="#__codelineno-9-111">111</a></span>
+<span class="normal"><a href="#__codelineno-9-112">112</a></span>
+<span class="normal"><a href="#__codelineno-9-113">113</a></span>
+<span class="normal"><a href="#__codelineno-9-114">114</a></span>
+<span class="normal"><a href="#__codelineno-9-115">115</a></span>
+<span class="normal"><a href="#__codelineno-9-116">116</a></span>
+<span class="normal"><a href="#__codelineno-9-117">117</a></span>
+<span class="normal"><a href="#__codelineno-9-118">118</a></span>
+<span class="normal"><a href="#__codelineno-9-119">119</a></span>
+<span class="normal"><a href="#__codelineno-9-120">120</a></span>
+<span class="normal"><a href="#__codelineno-9-121">121</a></span>
+<span class="normal"><a href="#__codelineno-9-122">122</a></span>
+<span class="normal"><a href="#__codelineno-9-123">123</a></span>
+<span class="normal"><a href="#__codelineno-9-124">124</a></span>
+<span class="normal"><a href="#__codelineno-9-125">125</a></span>
+<span class="normal"><a href="#__codelineno-9-126">126</a></span>
+<span class="normal"><a href="#__codelineno-9-127">127</a></span>
+<span class="normal"><a href="#__codelineno-9-128">128</a></span>
+<span class="normal"><a href="#__codelineno-9-129">129</a></span>
+<span class="normal"><a href="#__codelineno-9-130">130</a></span>
+<span class="normal"><a href="#__codelineno-9-131">131</a></span>
+<span class="normal"><a href="#__codelineno-9-132">132</a></span>
+<span class="normal"><a href="#__codelineno-9-133">133</a></span>
+<span class="normal"><a href="#__codelineno-9-134">134</a></span>
+<span class="normal"><a href="#__codelineno-9-135">135</a></span>
+<span class="normal"><a href="#__codelineno-9-136">136</a></span>
+<span class="normal"><a href="#__codelineno-9-137">137</a></span>
+<span class="normal"><a href="#__codelineno-9-138">138</a></span>
+<span class="normal"><a href="#__codelineno-9-139">139</a></span>
+<span class="normal"><a href="#__codelineno-9-140">140</a></span>
+<span class="normal"><a href="#__codelineno-9-141">141</a></span>
+<span class="normal"><a href="#__codelineno-9-142">142</a></span>
+<span class="normal"><a href="#__codelineno-9-143">143</a></span>
+<span class="normal"><a href="#__codelineno-9-144">144</a></span>
+<span class="normal"><a href="#__codelineno-9-145">145</a></span>
+<span class="normal"><a href="#__codelineno-9-146">146</a></span>
+<span class="normal"><a href="#__codelineno-9-147">147</a></span>
+<span class="normal"><a href="#__codelineno-9-148">148</a></span>
+<span class="normal"><a href="#__codelineno-9-149">149</a></span>
+<span class="normal"><a href="#__codelineno-9-150">150</a></span>
+<span class="normal"><a href="#__codelineno-9-151">151</a></span>
+<span class="normal"><a href="#__codelineno-9-152">152</a></span>
+<span class="normal"><a href="#__codelineno-9-153">153</a></span>
+<span class="normal"><a href="#__codelineno-9-154">154</a></span>
+<span class="normal"><a href="#__codelineno-9-155">155</a></span>
+<span class="normal"><a href="#__codelineno-9-156">156</a></span>
+<span class="normal"><a href="#__codelineno-9-157">157</a></span>
+<span class="normal"><a href="#__codelineno-9-158">158</a></span>
+<span class="normal"><a href="#__codelineno-9-159">159</a></span>
+<span class="normal"><a href="#__codelineno-9-160">160</a></span>
+<span class="normal"><a href="#__codelineno-9-161">161</a></span>
+<span class="normal"><a href="#__codelineno-9-162">162</a></span>
+<span class="normal"><a href="#__codelineno-9-163">163</a></span>
+<span class="normal"><a href="#__codelineno-9-164">164</a></span>
+<span class="normal"><a href="#__codelineno-9-165">165</a></span>
+<span class="normal"><a href="#__codelineno-9-166">166</a></span>
+<span class="normal"><a href="#__codelineno-9-167">167</a></span>
+<span class="normal"><a href="#__codelineno-9-168">168</a></span>
+<span class="normal"><a href="#__codelineno-9-169">169</a></span>
+<span class="normal"><a href="#__codelineno-9-170">170</a></span>
+<span class="normal"><a href="#__codelineno-9-171">171</a></span>
+<span class="normal"><a href="#__codelineno-9-172">172</a></span>
+<span class="normal"><a href="#__codelineno-9-173">173</a></span>
+<span class="normal"><a href="#__codelineno-9-174">174</a></span>
+<span class="normal"><a href="#__codelineno-9-175">175</a></span>
+<span class="normal"><a href="#__codelineno-9-176">176</a></span>
+<span class="normal"><a href="#__codelineno-9-177">177</a></span>
+<span class="normal"><a href="#__codelineno-9-178">178</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="nt">site_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">BCMSL [Project Name]</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2"></a><span class="nt">site_author</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">Your Name</span><span class="p p-Indicator">]</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3"></a><span class="nt">copyright</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Blue Coconut Multimedia Solutions Limited © 2023</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4"></a><span class="nt">repo_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bluecoconutltd/BCMSL_[Project Name]</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5"></a><span class="nt">repo_url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/bluecoconutltd/BCMSL_[Project Name]/</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6"></a><span class="nt">edit_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">edit/main/docs/</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7"></a>
+<a id="__codelineno-9-8" name="__codelineno-9-8"></a><span class="c1">## Navigation Configuration</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9"></a><span class="nt">nav</span><span class="p">:</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Welcome</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">index.md</span>
+<a id="__codelineno-9-11" name="__codelineno-9-11"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">0. Overview</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">overview.md</span>
+<a id="__codelineno-9-12" name="__codelineno-9-12"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">1. System Access</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">access.md</span>
+<a id="__codelineno-9-13" name="__codelineno-9-13"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">2. System Features</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">features.md</span>
+<a id="__codelineno-9-14" name="__codelineno-9-14"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">3. User Management</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">users.md</span>
+<a id="__codelineno-9-15" name="__codelineno-9-15"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">4. Data Reports</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">reports.md</span>
+<a id="__codelineno-9-16" name="__codelineno-9-16"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">5. KPIs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kpi.md</span>
+<a id="__codelineno-9-17" name="__codelineno-9-17"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">6. Data Management</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">data.md</span>
+<a id="__codelineno-9-18" name="__codelineno-9-18"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">7. References</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">reference.md</span>
+<a id="__codelineno-9-19" name="__codelineno-9-19"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Changelog</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">changelog.md</span>
+<a id="__codelineno-9-20" name="__codelineno-9-20"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">License</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">license.md</span>
+<a id="__codelineno-9-21" name="__codelineno-9-21"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Notes</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">notes.md</span>
+<a id="__codelineno-9-22" name="__codelineno-9-22"></a>
+<a id="__codelineno-9-23" name="__codelineno-9-23"></a><span class="c1">## Theme Configuration</span>
+<a id="__codelineno-9-24" name="__codelineno-9-24"></a><span class="nt">theme</span><span class="p">:</span>
+<a id="__codelineno-9-25" name="__codelineno-9-25"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">material</span>
+<a id="__codelineno-9-26" name="__codelineno-9-26"></a><span class="w">  </span><span class="nt">custom_dir</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">overrides</span>
+<a id="__codelineno-9-27" name="__codelineno-9-27"></a><span class="w">  </span><span class="nt">logo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">assets/img/BCMSL LOGO LIGHT ICON.svg</span>
+<a id="__codelineno-9-28" name="__codelineno-9-28"></a><span class="w">  </span><span class="nt">favicon</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">assets/img/favicon.ico</span>
+<a id="__codelineno-9-29" name="__codelineno-9-29"></a><span class="w">  </span><span class="nt">icon</span><span class="p">:</span>
+<a id="__codelineno-9-30" name="__codelineno-9-30"></a><span class="w">    </span><span class="nt">repo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fontawesome/brands/git-alt</span>
+<a id="__codelineno-9-31" name="__codelineno-9-31"></a><span class="w">    </span><span class="nt">edit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">material/pencil</span>
+<a id="__codelineno-9-32" name="__codelineno-9-32"></a><span class="w">    </span><span class="nt">view</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">material/eye</span>
+<a id="__codelineno-9-33" name="__codelineno-9-33"></a><span class="w">    </span><span class="nt">admonition</span><span class="p">:</span>
+<a id="__codelineno-9-34" name="__codelineno-9-34"></a><span class="w">      </span><span class="nt">note</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">octicons/tag-16</span>
+<a id="__codelineno-9-35" name="__codelineno-9-35"></a><span class="w">      </span><span class="nt">abstract</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">octicons/checklist-16</span>
+<a id="__codelineno-9-36" name="__codelineno-9-36"></a><span class="w">      </span><span class="nt">info</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">octicons/info-16</span>
+<a id="__codelineno-9-37" name="__codelineno-9-37"></a><span class="w">      </span><span class="nt">tip</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">octicons/squirrel-16</span>
+<a id="__codelineno-9-38" name="__codelineno-9-38"></a><span class="w">      </span><span class="nt">success</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">octicons/code-16</span>
+<a id="__codelineno-9-39" name="__codelineno-9-39"></a><span class="w">      </span><span class="nt">question</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">octicons/question-16</span>
+<a id="__codelineno-9-40" name="__codelineno-9-40"></a><span class="w">      </span><span class="nt">warning</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">octicons/alert-16</span>
+<a id="__codelineno-9-41" name="__codelineno-9-41"></a><span class="w">      </span><span class="nt">failure</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">octicons/x-circle-16</span>
+<a id="__codelineno-9-42" name="__codelineno-9-42"></a><span class="w">      </span><span class="nt">danger</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">octicons/zap-16</span>
+<a id="__codelineno-9-43" name="__codelineno-9-43"></a><span class="w">      </span><span class="nt">bug</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">octicons/bug-16</span>
+<a id="__codelineno-9-44" name="__codelineno-9-44"></a><span class="w">      </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">octicons/beaker-16</span>
+<a id="__codelineno-9-45" name="__codelineno-9-45"></a><span class="w">      </span><span class="nt">quote</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">octicons/quote-16</span>
+<a id="__codelineno-9-46" name="__codelineno-9-46"></a><span class="w">  </span><span class="nt">palette</span><span class="p">:</span>
+<a id="__codelineno-9-47" name="__codelineno-9-47"></a>
+<a id="__codelineno-9-48" name="__codelineno-9-48"></a><span class="w">    </span><span class="c1"># Palette toggle for dark mode</span>
+<a id="__codelineno-9-49" name="__codelineno-9-49"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">media</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;(prefers-color-scheme:</span><span class="nv"> </span><span class="s">dark)&quot;</span>
+<a id="__codelineno-9-50" name="__codelineno-9-50"></a><span class="w">      </span><span class="nt">scheme</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">slate</span><span class="w"> </span>
+<a id="__codelineno-9-51" name="__codelineno-9-51"></a><span class="w">      </span><span class="nt">toggle</span><span class="p">:</span>
+<a id="__codelineno-9-52" name="__codelineno-9-52"></a><span class="w">        </span><span class="nt">icon</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">material/weather-night</span>
+<a id="__codelineno-9-53" name="__codelineno-9-53"></a><span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Switch to light mode</span>
+<a id="__codelineno-9-54" name="__codelineno-9-54"></a><span class="w">    </span><span class="c1"># Palette toggle for light mode</span>
+<a id="__codelineno-9-55" name="__codelineno-9-55"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">media</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;(prefers-color-scheme:</span><span class="nv"> </span><span class="s">light)&quot;</span>
+<a id="__codelineno-9-56" name="__codelineno-9-56"></a><span class="w">      </span><span class="nt">scheme</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">BCMSL_LIGHT</span>
+<a id="__codelineno-9-57" name="__codelineno-9-57"></a><span class="w">      </span><span class="nt">toggle</span><span class="p">:</span>
+<a id="__codelineno-9-58" name="__codelineno-9-58"></a><span class="w">        </span><span class="nt">icon</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">material/weather-sunny</span>
+<a id="__codelineno-9-59" name="__codelineno-9-59"></a><span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Switch to dark mode</span>
+<a id="__codelineno-9-60" name="__codelineno-9-60"></a><span class="w">  </span><span class="nt">font</span><span class="p">:</span>
+<a id="__codelineno-9-61" name="__codelineno-9-61"></a><span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Open Sans</span>
+<a id="__codelineno-9-62" name="__codelineno-9-62"></a><span class="w">    </span><span class="nt">code</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Inconsolata</span>
+<a id="__codelineno-9-63" name="__codelineno-9-63"></a><span class="w">  </span><span class="nt">features</span><span class="p">:</span>
+<a id="__codelineno-9-64" name="__codelineno-9-64"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">navigation.instant</span>
+<a id="__codelineno-9-65" name="__codelineno-9-65"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">navigation.tabs.sticky</span>
+<a id="__codelineno-9-66" name="__codelineno-9-66"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">navigation.sections</span>
+<a id="__codelineno-9-67" name="__codelineno-9-67"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">navigation.path</span>
+<a id="__codelineno-9-68" name="__codelineno-9-68"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">navigation.prune</span>
+<a id="__codelineno-9-69" name="__codelineno-9-69"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">navigation.indexes</span>
+<a id="__codelineno-9-70" name="__codelineno-9-70"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">navigation.top</span>
+<a id="__codelineno-9-71" name="__codelineno-9-71"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">navigation.footer</span>
+<a id="__codelineno-9-72" name="__codelineno-9-72"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">toc.integrate</span>
+<a id="__codelineno-9-73" name="__codelineno-9-73"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">search.suggest</span>
+<a id="__codelineno-9-74" name="__codelineno-9-74"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">search.highlight</span>
+<a id="__codelineno-9-75" name="__codelineno-9-75"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">content.action.edit</span>
+<a id="__codelineno-9-76" name="__codelineno-9-76"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">content.code.copy</span>
+<a id="__codelineno-9-77" name="__codelineno-9-77"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">content.code.annotate</span>
+<a id="__codelineno-9-78" name="__codelineno-9-78"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">content.tabs.link</span>
+<a id="__codelineno-9-79" name="__codelineno-9-79"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">content.tooltips</span>
+<a id="__codelineno-9-80" name="__codelineno-9-80"></a>
+<a id="__codelineno-9-81" name="__codelineno-9-81"></a><span class="c1">## Extra CSS Configuration</span>
+<a id="__codelineno-9-82" name="__codelineno-9-82"></a><span class="nt">extra_css</span><span class="p">:</span>
+<a id="__codelineno-9-83" name="__codelineno-9-83"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">assets/css/main.css</span>
+<a id="__codelineno-9-84" name="__codelineno-9-84"></a>
+<a id="__codelineno-9-85" name="__codelineno-9-85"></a><span class="c1">## Extra JS Configuration</span>
+<a id="__codelineno-9-86" name="__codelineno-9-86"></a><span class="nt">extra_javascript</span><span class="p">:</span>
+<a id="__codelineno-9-87" name="__codelineno-9-87"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js</span>
+<a id="__codelineno-9-88" name="__codelineno-9-88"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">assets/js/tablesort.js</span>
+<a id="__codelineno-9-89" name="__codelineno-9-89"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">assets/js/main.js</span>
+<a id="__codelineno-9-90" name="__codelineno-9-90"></a>
+<a id="__codelineno-9-91" name="__codelineno-9-91"></a><span class="c1">## Extra Context Configuration</span>
+<a id="__codelineno-9-92" name="__codelineno-9-92"></a><span class="nt">extra</span><span class="p">:</span>
+<a id="__codelineno-9-93" name="__codelineno-9-93"></a><span class="w">  </span><span class="nt">homepage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://bluecoconut.ltd</span>
+<a id="__codelineno-9-94" name="__codelineno-9-94"></a><span class="w">  </span><span class="nt">version</span><span class="p">:</span>
+<a id="__codelineno-9-95" name="__codelineno-9-95"></a><span class="w">    </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mike</span>
+<a id="__codelineno-9-96" name="__codelineno-9-96"></a><span class="w">  </span><span class="nt">consent</span><span class="p">:</span>
+<a id="__codelineno-9-97" name="__codelineno-9-97"></a><span class="w">    </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Cookie Consent</span>
+<a id="__codelineno-9-98" name="__codelineno-9-98"></a><span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;-</span><span class="w"> </span>
+<a id="__codelineno-9-99" name="__codelineno-9-99"></a><span class="w">      </span><span class="no">We use cookies to recognize your repeated visits and preferences, as well</span>
+<a id="__codelineno-9-100" name="__codelineno-9-100"></a><span class="w">      </span><span class="no">as to measure the effectiveness of our documentation and whether users</span>
+<a id="__codelineno-9-101" name="__codelineno-9-101"></a><span class="w">      </span><span class="no">find what they&#39;re searching for. With your consent, you&#39;re helping us to</span>
+<a id="__codelineno-9-102" name="__codelineno-9-102"></a><span class="w">      </span><span class="no">make our documentation better.</span>
+<a id="__codelineno-9-103" name="__codelineno-9-103"></a><span class="w">    </span><span class="nt">cookies</span><span class="p">:</span>
+<a id="__codelineno-9-104" name="__codelineno-9-104"></a><span class="w">      </span><span class="nt">analytics</span><span class="p">:</span>
+<a id="__codelineno-9-105" name="__codelineno-9-105"></a><span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Google Analytics</span>
+<a id="__codelineno-9-106" name="__codelineno-9-106"></a><span class="w">        </span><span class="nt">checked</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-9-107" name="__codelineno-9-107"></a><span class="w">    </span><span class="nt">actions</span><span class="p">:</span>
+<a id="__codelineno-9-108" name="__codelineno-9-108"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">accept</span>
+<a id="__codelineno-9-109" name="__codelineno-9-109"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">manage</span>
+<a id="__codelineno-9-110" name="__codelineno-9-110"></a><span class="w">  </span><span class="nt">copyright</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<a id="__codelineno-9-111" name="__codelineno-9-111"></a><span class="w">    </span><span class="no">Copyright &amp;copy; 2017 - 2023 Blue Coconut Multimedia Solutions Limited –</span>
+<a id="__codelineno-9-112" name="__codelineno-9-112"></a><span class="w">    </span><span class="no">&lt;a href=&quot;#__consent&quot;&gt;Manage Settings&lt;/a&gt;</span>
+<a id="__codelineno-9-113" name="__codelineno-9-113"></a><span class="w">  </span><span class="nt">social</span><span class="p">:</span>
+<a id="__codelineno-9-114" name="__codelineno-9-114"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">icon</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fontawesome/brands/twitter</span>
+<a id="__codelineno-9-115" name="__codelineno-9-115"></a><span class="w">      </span><span class="nt">link</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://twitter.com/bluecoconutltd</span>
+<a id="__codelineno-9-116" name="__codelineno-9-116"></a><span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Blue Coconut Multimedia Solutions Limited</span>
+<a id="__codelineno-9-117" name="__codelineno-9-117"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">icon</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fontawesome/brands/linkedin</span>
+<a id="__codelineno-9-118" name="__codelineno-9-118"></a><span class="w">      </span><span class="nt">link</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://linkedin.com/bluecoconutltd</span>
+<a id="__codelineno-9-119" name="__codelineno-9-119"></a><span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Blue Coconut Multimedia Solutions Limited</span>
+<a id="__codelineno-9-120" name="__codelineno-9-120"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">icon</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fontawesome/brands/facebook</span>
+<a id="__codelineno-9-121" name="__codelineno-9-121"></a><span class="w">      </span><span class="nt">link</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://facebook.com/bluecoconutltd</span>
+<a id="__codelineno-9-122" name="__codelineno-9-122"></a><span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Blue Coconut Multimedia Solutions Limited</span>
+<a id="__codelineno-9-123" name="__codelineno-9-123"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">icon</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fontawesome/brands/instagram</span>
+<a id="__codelineno-9-124" name="__codelineno-9-124"></a><span class="w">      </span><span class="nt">link</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://instagram.com/bluecoconutltd</span>
+<a id="__codelineno-9-125" name="__codelineno-9-125"></a><span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Blue Coconut Multimedia Solutions Limited</span>
+<a id="__codelineno-9-126" name="__codelineno-9-126"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">icon</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fontawesome/brands/github</span>
+<a id="__codelineno-9-127" name="__codelineno-9-127"></a><span class="w">      </span><span class="nt">link</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/bluecoconutltd</span>
+<a id="__codelineno-9-128" name="__codelineno-9-128"></a><span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Blue Coconut Multimedia Solutions Limited</span>
+<a id="__codelineno-9-129" name="__codelineno-9-129"></a><span class="w">  </span><span class="nt">generator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-9-130" name="__codelineno-9-130"></a>
+<a id="__codelineno-9-131" name="__codelineno-9-131"></a><span class="c1">## MarkDown Extensions Configuration</span>
+<a id="__codelineno-9-132" name="__codelineno-9-132"></a><span class="nt">markdown_extensions</span><span class="p">:</span>
+<a id="__codelineno-9-133" name="__codelineno-9-133"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">abbr</span>
+<a id="__codelineno-9-134" name="__codelineno-9-134"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">admonition</span>
+<a id="__codelineno-9-135" name="__codelineno-9-135"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">attr_list</span>
+<a id="__codelineno-9-136" name="__codelineno-9-136"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">def_list</span>
+<a id="__codelineno-9-137" name="__codelineno-9-137"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">md_in_html</span>
+<a id="__codelineno-9-138" name="__codelineno-9-138"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">footnotes</span>
+<a id="__codelineno-9-139" name="__codelineno-9-139"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tables</span>
+<a id="__codelineno-9-140" name="__codelineno-9-140"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pymdownx.critic</span>
+<a id="__codelineno-9-141" name="__codelineno-9-141"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pymdownx.caret</span>
+<a id="__codelineno-9-142" name="__codelineno-9-142"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pymdownx.keys</span>
+<a id="__codelineno-9-143" name="__codelineno-9-143"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pymdownx.mark</span>
+<a id="__codelineno-9-144" name="__codelineno-9-144"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pymdownx.tilde</span>
+<a id="__codelineno-9-145" name="__codelineno-9-145"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pymdownx.details</span>
+<a id="__codelineno-9-146" name="__codelineno-9-146"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pymdownx.superfences</span>
+<a id="__codelineno-9-147" name="__codelineno-9-147"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pymdownx.inlinehilite</span>
+<a id="__codelineno-9-148" name="__codelineno-9-148"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pymdownx.snippets</span>
+<a id="__codelineno-9-149" name="__codelineno-9-149"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pymdownx.betterem</span>
+<a id="__codelineno-9-150" name="__codelineno-9-150"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pymdownx.smartsymbols</span>
+<a id="__codelineno-9-151" name="__codelineno-9-151"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pymdownx.tasklist</span><span class="p">:</span>
+<a id="__codelineno-9-152" name="__codelineno-9-152"></a><span class="w">        </span><span class="nt">custom_checkbox</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<a id="__codelineno-9-153" name="__codelineno-9-153"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pymdownx.arithmatex</span><span class="p">:</span>
+<a id="__codelineno-9-154" name="__codelineno-9-154"></a><span class="w">        </span><span class="nt">generic</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<a id="__codelineno-9-155" name="__codelineno-9-155"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pymdownx.emoji</span><span class="p">:</span>
+<a id="__codelineno-9-156" name="__codelineno-9-156"></a><span class="w">        </span><span class="nt">emoji_index</span><span class="p">:</span><span class="w"> </span><span class="kt">!!python/name:materialx.emoji.twemoji</span>
+<a id="__codelineno-9-157" name="__codelineno-9-157"></a><span class="w">        </span><span class="nt">emoji_generator</span><span class="p">:</span><span class="w"> </span><span class="kt">!!python/name:materialx.emoji.to_svg</span>
+<a id="__codelineno-9-158" name="__codelineno-9-158"></a><span class="w">        </span><span class="nt">options</span><span class="p">:</span>
+<a id="__codelineno-9-159" name="__codelineno-9-159"></a><span class="w">          </span><span class="nt">custom_icons</span><span class="p">:</span>
+<a id="__codelineno-9-160" name="__codelineno-9-160"></a><span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">overrides/.icons</span>
+<a id="__codelineno-9-161" name="__codelineno-9-161"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pymdownx.highlight</span><span class="p">:</span>
+<a id="__codelineno-9-162" name="__codelineno-9-162"></a><span class="w">        </span><span class="nt">anchor_linenums</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<a id="__codelineno-9-163" name="__codelineno-9-163"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pymdownx.tabbed</span><span class="p">:</span>
+<a id="__codelineno-9-164" name="__codelineno-9-164"></a><span class="w">        </span><span class="nt">alternate_style</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<a id="__codelineno-9-165" name="__codelineno-9-165"></a>
+<a id="__codelineno-9-166" name="__codelineno-9-166"></a><span class="c1">## Plugins Configuration</span>
+<a id="__codelineno-9-167" name="__codelineno-9-167"></a><span class="c1"># plugins:</span>
+<a id="__codelineno-9-168" name="__codelineno-9-168"></a><span class="c1">#     - search:</span>
+<a id="__codelineno-9-169" name="__codelineno-9-169"></a><span class="c1">#         separator: &#39;[\s\-,:!=\[\]()&quot;/]+|(?!\b)(?=[A-Z][a-z])|\.(?!\d)|&amp;[lg]t;&#39;</span>
+<a id="__codelineno-9-170" name="__codelineno-9-170"></a><span class="c1">#     - glightbox</span>
+<a id="__codelineno-9-171" name="__codelineno-9-171"></a><span class="c1">#     - git-authors</span>
+<a id="__codelineno-9-172" name="__codelineno-9-172"></a><span class="c1">#     - git-revision-date-localized:</span>
+<a id="__codelineno-9-173" name="__codelineno-9-173"></a><span class="c1">#         enable_creation_date: true</span>
+<a id="__codelineno-9-174" name="__codelineno-9-174"></a><span class="c1">#         type: timeago</span>
+<a id="__codelineno-9-175" name="__codelineno-9-175"></a><span class="c1">#     - git-committers:</span>
+<a id="__codelineno-9-176" name="__codelineno-9-176"></a><span class="c1">#         repository: bluecoconutltd/BCMSL_DevOps_Guidelines</span>
+<a id="__codelineno-9-177" name="__codelineno-9-177"></a><span class="c1">#         branch: main</span>
+<a id="__codelineno-9-178" name="__codelineno-9-178"></a><span class="c1">#     - offline</span>
+</code></pre></div></td></tr></table></div>
+</li>
+<li>
+<p><strong>2.3.10</strong> - Once Auto-Save is on in <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 16.47V7.39l-6 4.54M2.22 9.19a.858.858 0 0 1-.02-1.15l1.2-1.11c.2-.18.69-.26 1.05 0l3.42 2.61 7.93-7.25c.32-.32.87-.45 1.5-.12l4 1.91c.36.21.7.54.7 1.15v13.5c0 .4-.29.83-.6 1l-4.4 2.1c-.32.13-.92.01-1.13-.2l-8.02-7.3-3.4 2.6c-.38.26-.85.19-1.05 0l-1.2-1.1c-.32-.33-.28-.87.05-1.2l3-2.7"/></svg></span> <a href="https://code.visualstudio.com/">Visual Studio Code</a>, any file changes would automatically be logged by <a href="https://git-scm.com/downloads">Git</a>. These changes can be committed and pushed to the repository either through:</p>
+<ol>
+<li>
+<p><strong><em>(Preferred Method)</em></strong> <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 16.47V7.39l-6 4.54M2.22 9.19a.858.858 0 0 1-.02-1.15l1.2-1.11c.2-.18.69-.26 1.05 0l3.42 2.61 7.93-7.25c.32-.32.87-.45 1.5-.12l4 1.91c.36.21.7.54.7 1.15v13.5c0 .4-.29.83-.6 1l-4.4 2.1c-.32.13-.92.01-1.13-.2l-8.02-7.3-3.4 2.6c-.38.26-.85.19-1.05 0l-1.2-1.1c-.32-.33-.28-.87.05-1.2l3-2.7"/></svg></span> <a href="https://code.visualstudio.com/">Visual Studio Code</a> by selecting the <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M9.5 3.25a2.25 2.25 0 1 1 3 2.122V6A2.5 2.5 0 0 1 10 8.5H6a1 1 0 0 0-1 1v1.128a2.251 2.251 0 1 1-1.5 0V5.372a2.25 2.25 0 1 1 1.5 0v1.836A2.493 2.493 0 0 1 6 7h4a1 1 0 0 0 1-1v-.628A2.25 2.25 0 0 1 9.5 3.25Zm-6 0a.75.75 0 1 0 1.5 0 .75.75 0 0 0-1.5 0Zm8.25-.75a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5ZM4.25 12a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Z"/></svg></span> Branch Icon, selecting the <span class="keys"><kbd>Initialize Repository</kbd></span><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.64 21.97a.99.99 0 0 1-1.33-.47l-2.18-4.74-2.51 2.02c-.17.14-.38.22-.62.22a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1c.24 0 .47.09.64.23l.01-.01 11.49 9.64a1.001 1.001 0 0 1-.44 1.75l-3.16.62 2.2 4.73c.26.5.02 1.09-.48 1.32l-3.62 1.69Z"/></svg></span> button after, then click <span class="keys"><kbd>Commit</kbd></span><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.64 21.97a.99.99 0 0 1-1.33-.47l-2.18-4.74-2.51 2.02c-.17.14-.38.22-.62.22a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1c.24 0 .47.09.64.23l.01-.01 11.49 9.64a1.001 1.001 0 0 1-.44 1.75l-3.16.62 2.2 4.73c.26.5.02 1.09-.48 1.32l-3.62 1.69Z"/></svg></span> and <strong>add the message</strong> <em>"Initial Commit"</em> when the window appears.
+  <a class="glightbox" href="assets/img/screenshots/Preview2310a.webp" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Preview2310a" src="assets/img/screenshots/Preview2310a.webp" title="click to enlarge" width="300" /></a></p>
+<p><strong><em>or</em></strong></p>
+</li>
+<li>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2Z"/></svg></span> <a href="https://desktop.github.com/">GitHub Desktop</a> by selecting the <span class="keys"><kbd>Commit to main</kbd></span><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.64 21.97a.99.99 0 0 1-1.33-.47l-2.18-4.74-2.51 2.02c-.17.14-.38.22-.62.22a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1c.24 0 .47.09.64.23l.01-.01 11.49 9.64a1.001 1.001 0 0 1-.44 1.75l-3.16.62 2.2 4.73c.26.5.02 1.09-.48 1.32l-3.62 1.69Z"/></svg></span> button and then clicking the <span class="keys"><kbd>Push origin</kbd></span><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.64 21.97a.99.99 0 0 1-1.33-.47l-2.18-4.74-2.51 2.02c-.17.14-.38.22-.62.22a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1c.24 0 .47.09.64.23l.01-.01 11.49 9.64a1.001 1.001 0 0 1-.44 1.75l-3.16.62 2.2 4.73c.26.5.02 1.09-.48 1.32l-3.62 1.69Z"/></svg></span>  <strong>(Only Possible if Repository is already Initialized Locally)</strong>.</p>
+<p><strong><em>or</em></strong></p>
+</li>
+<li>
+<p>running the following command in the  <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M2.6 10.59 8.38 4.8l1.69 1.7c-.24.85.15 1.78.93 2.23v5.54c-.6.34-1 .99-1 1.73a2 2 0 0 0 2 2 2 2 0 0 0 2-2c0-.74-.4-1.39-1-1.73V9.41l2.07 2.09c-.07.15-.07.32-.07.5a2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2c-.18 0-.35 0-.5.07L13.93 7.5a1.98 1.98 0 0 0-1.15-2.34c-.43-.16-.88-.2-1.28-.09L9.8 3.38l.79-.78c.78-.79 2.04-.79 2.82 0l7.99 7.99c.79.78.79 2.04 0 2.82l-7.99 7.99c-.78.79-2.04.79-2.82 0L2.6 13.41c-.79-.78-.79-2.04 0-2.82Z"/></svg></span> Git Bash Terminal:
+  <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>git<span class="w"> </span>commit<span class="w"> </span>-a
+</code></pre></div>
+  When <code>commits</code> and <code>commit messages</code> are made by any of these programmes a <strong>passphrase prompt</strong> will appear to verify the developer's OpenPGP Key which is verified by <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M2.968 11.583h1.274v-3.82A7.76 7.76 0 0 1 12.005 0a7.76 7.76 0 0 1 7.762 7.763v3.783c-.018.01-.037.028-.056.037l-.01.01-.008.009h-.01l-.01.01-.009.009h-.028l-.018.018h-.02l-.018.01h-.01l-.009.01-.009.009h-.01l-.009.009-.009.01-.01.009-.009.009-.028.019-.019.01-.028.018-.018.01-.02.009-.027.018-.019.01-.01.009-.027.019-.02.01-.046.027-.019.01-.018.009-.02.01h-.008l-.057.027h-.019c-.018.01-.037.02-.065.038h-.01l-.009.01-.028.018-.018.01-.029.018-.018.01h-.01l-.028.018-.018.01-.02.009c-.018.01-.046.019-.065.028l-.018.01-.02.009-.037.018-.037.02-.047.018-.047.019-.019.009-.037.019-.019.01c-1.545.739-4.017 1.516-8.708 1.853-3.362.244-5.403 1.723-6.724 3.502zm4.842 0h8.371v-3.82a4.184 4.184 0 0 0-4.186-4.186A4.184 4.184 0 0 0 7.81 7.763zm13.222 1.461V24H5.572c1.704-.946 2.968-.852 5.075-.787 2.865.094 6.03-1.105 7.585-2.696 1.554-1.592-.14-.375-1.901.074-1.76.45-5.17.497-7.454-.103 7.173.094 9.973-2.219 11.555-4.307 1.583-2.079-.683-.365-2.153.356-1.47.72-4.036 1.227-6.864.852 4.27-.01 7.52-2.144 9.607-4.345z"/></svg></span>GNU Privacy Guard. This passphrase would have been created when the developer was setting up their <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M2.968 11.583h1.274v-3.82A7.76 7.76 0 0 1 12.005 0a7.76 7.76 0 0 1 7.762 7.763v3.783c-.018.01-.037.028-.056.037l-.01.01-.008.009h-.01l-.01.01-.009.009h-.028l-.018.018h-.02l-.018.01h-.01l-.009.01-.009.009h-.01l-.009.009-.009.01-.01.009-.009.009-.028.019-.019.01-.028.018-.018.01-.02.009-.027.018-.019.01-.01.009-.027.019-.02.01-.046.027-.019.01-.018.009-.02.01h-.008l-.057.027h-.019c-.018.01-.037.02-.065.038h-.01l-.009.01-.028.018-.018.01-.029.018-.018.01h-.01l-.028.018-.018.01-.02.009c-.018.01-.046.019-.065.028l-.018.01-.02.009-.037.018-.037.02-.047.018-.047.019-.019.009-.037.019-.019.01c-1.545.739-4.017 1.516-8.708 1.853-3.362.244-5.403 1.723-6.724 3.502zm4.842 0h8.371v-3.82a4.184 4.184 0 0 0-4.186-4.186A4.184 4.184 0 0 0 7.81 7.763zm13.222 1.461V24H5.572c1.704-.946 2.968-.852 5.075-.787 2.865.094 6.03-1.105 7.585-2.696 1.554-1.592-.14-.375-1.901.074-1.76.45-5.17.497-7.454-.103 7.173.094 9.973-2.219 11.555-4.307 1.583-2.079-.683-.365-2.153.356-1.47.72-4.036 1.227-6.864.852 4.27-.01 7.52-2.144 9.607-4.345z"/></svg></span>GNU Privacy Guard CLI and Security Key.
+  <a class="glightbox" href="assets/img/screenshots/Preview2310b.webp" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Preview2310b" src="assets/img/screenshots/Preview2310b.webp" title="click to enlarge" width="400" /></a></p>
+</li>
+</ol>
+</li>
+<li>
+<p><strong>2.3.11</strong> - In either the <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 16.47V7.39l-6 4.54M2.22 9.19a.858.858 0 0 1-.02-1.15l1.2-1.11c.2-.18.69-.26 1.05 0l3.42 2.61 7.93-7.25c.32-.32.87-.45 1.5-.12l4 1.91c.36.21.7.54.7 1.15v13.5c0 .4-.29.83-.6 1l-4.4 2.1c-.32.13-.92.01-1.13-.2l-8.02-7.3-3.4 2.6c-.38.26-.85.19-1.05 0l-1.2-1.1c-.32-.33-.28-.87.05-1.2l3-2.7"/></svg></span> <a href="https://code.visualstudio.com/">Visual Studio Code</a>, <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2Z"/></svg></span> <a href="https://desktop.github.com/">GitHub Desktop</a> or <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M2.6 10.59 8.38 4.8l1.69 1.7c-.24.85.15 1.78.93 2.23v5.54c-.6.34-1 .99-1 1.73a2 2 0 0 0 2 2 2 2 0 0 0 2-2c0-.74-.4-1.39-1-1.73V9.41l2.07 2.09c-.07.15-.07.32-.07.5a2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2c-.18 0-.35 0-.5.07L13.93 7.5a1.98 1.98 0 0 0-1.15-2.34c-.43-.16-.88-.2-1.28-.09L9.8 3.38l.79-.78c.78-.79 2.04-.79 2.82 0l7.99 7.99c.79.78.79 2.04 0 2.82l-7.99 7.99c-.78.79-2.04.79-2.82 0L2.6 13.41c-.79-.78-.79-2.04 0-2.82Z"/></svg></span> Git Bash Terminal, the developer can add the necessary <strong>'Bug Fixes'</strong>, <strong>'Documentation'</strong>, <strong>'Features'</strong>, etc. changelog categories with their respective keyword <strong><em>'Fix: '</em></strong>, <strong><em>'Doc: '</em></strong>, <strong><em>'Feat: '</em></strong>, etc. to execute the <code>push actions</code> which automatically updates the commits to the <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 9V3.5L18.5 9M6 2c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6H6Z"/></svg></span><code>changelog.md</code> file under <strong>'Bug Fixes'</strong>, <strong>'Documentation'</strong>, <strong>'Features'</strong>, etc. section headings for the release.  </p>
+</li>
+</ul>
+<div class="admonition success">
+<p class="admonition-title"><a href="https://github.com/release-it/conventional-changelog">Conventional Changelog</a> Commands</p>
+<p>When entering the commit message use the following <strong>appropriate method</strong> type below to label categories in the changelog after they are committed. <strong>EXAMPLE:</strong>   <strong><em>"Fix: Removed Callback Error String"</em></strong></p>
+<table>
+<thead>
+<tr>
+<th>Method Type</th>
+<th>Changelog Category (Section)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><mark><strong><em>Add:</em></strong></mark> <strong><em>"Then Write Commit Message"</em></strong></td>
+<td><strong><em><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 12a5 5 0 0 1-4 4.9V21h-2v-4.1a5 5 0 0 1 0-9.8V3h2v4.1a5 5 0 0 1 4 4.9m-5-3a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3Z"/></svg></span>             Added</em></strong></td>
+</tr>
+<tr>
+<td><mark><strong><em>Del:</em></strong></mark> <strong><em>"Then Write Commit Message"</em></strong></td>
+<td><strong><em><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 12a5 5 0 0 1-4 4.9V21h-2v-4.1a5 5 0 0 1 0-9.8V3h2v4.1a5 5 0 0 1 4 4.9m-5-3a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3Z"/></svg></span>           Deleted</em></strong></td>
+</tr>
+<tr>
+<td><mark><strong><em>Deprec:</em></strong></mark> <strong><em>"Then Write Commit Message"</em></strong></td>
+<td><strong><em><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 12a5 5 0 0 1-4 4.9V21h-2v-4.1a5 5 0 0 1 0-9.8V3h2v4.1a5 5 0 0 1 4 4.9m-5-3a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3Z"/></svg></span>        Deprecated</em></strong></td>
+</tr>
+<tr>
+<td><mark><strong><em>Docs:</em></strong></mark> <strong><em>"Then Write Commit Message"</em></strong></td>
+<td><strong><em><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 12a5 5 0 0 1-4 4.9V21h-2v-4.1a5 5 0 0 1 0-9.8V3h2v4.1a5 5 0 0 1 4 4.9m-5-3a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3Z"/></svg></span>     Documentation</em></strong></td>
+</tr>
+<tr>
+<td><mark><strong><em>Feat:</em></strong></mark> <strong><em>"Then Write Commit Message"</em></strong></td>
+<td><strong><em><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 12a5 5 0 0 1-4 4.9V21h-2v-4.1a5 5 0 0 1 0-9.8V3h2v4.1a5 5 0 0 1 4 4.9m-5-3a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3Z"/></svg></span>          Features</em></strong></td>
+</tr>
+<tr>
+<td><mark><strong><em>Fix:</em></strong></mark> <strong><em>"Then Write Commit Message"</em></strong></td>
+<td><strong><em><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 12a5 5 0 0 1-4 4.9V21h-2v-4.1a5 5 0 0 1 0-9.8V3h2v4.1a5 5 0 0 1 4 4.9m-5-3a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3Z"/></svg></span>         Bug Fixes</em></strong></td>
+</tr>
+<tr>
+<td><mark><strong><em>Int:</em></strong></mark> <strong><em>"Then Write Commit Message"</em></strong></td>
+<td><strong><em><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 12a5 5 0 0 1-4 4.9V21h-2v-4.1a5 5 0 0 1 0-9.8V3h2v4.1a5 5 0 0 1 4 4.9m-5-3a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3Z"/></svg></span>        Integrated</em></strong></td>
+</tr>
+<tr>
+<td><mark><strong><em>Rename:</em></strong></mark> <strong><em>"Then Write Commit Message"</em></strong></td>
+<td><strong><em><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 12a5 5 0 0 1-4 4.9V21h-2v-4.1a5 5 0 0 1 0-9.8V3h2v4.1a5 5 0 0 1 4 4.9m-5-3a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3Z"/></svg></span>           Renamed</em></strong></td>
+</tr>
+<tr>
+<td><mark><strong><em>Roll:</em></strong></mark> <strong><em>"Then Write Commit Message"</em></strong></td>
+<td><strong><em><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 12a5 5 0 0 1-4 4.9V21h-2v-4.1a5 5 0 0 1 0-9.8V3h2v4.1a5 5 0 0 1 4 4.9m-5-3a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3Z"/></svg></span>          Rollback</em></strong></td>
+</tr>
+<tr>
+<td><mark><strong><em>Refactor:</em></strong></mark> <strong><em>"Then Write Commit Message"</em></strong></td>
+<td><strong><em><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 12a5 5 0 0 1-4 4.9V21h-2v-4.1a5 5 0 0 1 0-9.8V3h2v4.1a5 5 0 0 1 4 4.9m-5-3a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3Z"/></svg></span>        Refactored</em></strong></td>
+</tr>
+<tr>
+<td><mark><strong><em>Update:</em></strong></mark> <strong><em>"Then Write Commit Message"</em></strong></td>
+<td><strong><em><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 12a5 5 0 0 1-4 4.9V21h-2v-4.1a5 5 0 0 1 0-9.8V3h2v4.1a5 5 0 0 1 4 4.9m-5-3a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3Z"/></svg></span>           Updated</em></strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition warning">
+<p class="admonition-title"><strong>IMPORTANT NOTE: Use ASSIGNED Commenting Format!</strong></p>
+<p>Avoid making mistakes and making your work become <strong>"invisible"</strong> by creating unformatted comments.</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>Fix:<span class="w"> </span>Added<span class="w"> </span>Missing<span class="w"> </span>License<span class="w"> </span>Tag<span class="w"> </span>to<span class="w"> </span>Changelog
+</code></pre></div>
+  Then, if in the <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M2.6 10.59 8.38 4.8l1.69 1.7c-.24.85.15 1.78.93 2.23v5.54c-.6.34-1 .99-1 1.73a2 2 0 0 0 2 2 2 2 0 0 0 2-2c0-.74-.4-1.39-1-1.73V9.41l2.07 2.09c-.07.15-.07.32-.07.5a2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2c-.18 0-.35 0-.5.07L13.93 7.5a1.98 1.98 0 0 0-1.15-2.34c-.43-.16-.88-.2-1.28-.09L9.8 3.38l.79-.78c.78-.79 2.04-.79 2.82 0l7.99 7.99c.79.78.79 2.04 0 2.82l-7.99 7.99c-.78.79-2.04.79-2.82 0L2.6 13.41c-.79-.78-.79-2.04 0-2.82Z"/></svg></span> Git Bash Terminal, press <span class="keys"><kbd class="key-enter">Enter</kbd></span> to add the commit message. The developer can repeat running <code>git commit -a</code> to commit the <strong>'Features'</strong> update below. In <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 16.47V7.39l-6 4.54M2.22 9.19a.858.858 0 0 1-.02-1.15l1.2-1.11c.2-.18.69-.26 1.05 0l3.42 2.61 7.93-7.25c.32-.32.87-.45 1.5-.12l4 1.91c.36.21.7.54.7 1.15v13.5c0 .4-.29.83-.6 1l-4.4 2.1c-.32.13-.92.01-1.13-.2l-8.02-7.3-3.4 2.6c-.38.26-.85.19-1.05 0l-1.2-1.1c-.32-.33-.28-.87.05-1.2l3-2.7"/></svg></span> <a href="https://code.visualstudio.com/">Visual Studio Code</a> pressing <span class="keys"><kbd class="key-enter">Enter</kbd></span> moves you to a new line to enter a description/note to add clarity to the comment.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>Feat:<span class="w"> </span>Added<span class="w"> </span>GitHub<span class="w"> </span>Repository<span class="w"> </span>Plugins<span class="w"> </span>
+</code></pre></div>
+</div>
+<ul>
+<li><strong>2.3.12</strong> - Now run <strong><code>npm run release patch</code></strong> to release the <strong>0.0.1</strong> version of the Project to the changelog, which automatically adds the comments and release information to the created changelog which can be viewed here <a href="changelog.html">HERE</a> in this documentation, or on the <a href="https://github.com/">Github</a> repository once it is pushed.</li>
+</ul>
+<div class="admonition success">
+<p class="admonition-title"><strong>Release-It Commands for Semantic Versioning of Push Actions!</strong></p>
+<p>To push the <strong>patch</strong> version (i.e: <strong>0.0.<mark>1</mark></strong>) releases of the project use the following command:<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="w">    </span>npm<span class="w"> </span>run<span class="w"> </span>release<span class="w"> </span>patch
+</code></pre></div></p>
+<p>To push the <strong>minor</strong> version (i.e: <strong>0.<mark>1</mark>.0</strong>) releases of the project use the following command:<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="w">    </span>npm<span class="w"> </span>run<span class="w"> </span>release<span class="w"> </span>minor
+</code></pre></div></p>
+<p>To push the <strong>major</strong> version (i.e: <strong><mark>1</mark>.0.0</strong>) releases of the project use the following command:<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="w">    </span>npm<span class="w"> </span>run<span class="w"> </span>release<span class="w"> </span>major
+</code></pre></div></p>
+</div>
+<div class="admonition note-github">
+<p class="admonition-title"><strong><a href="https://github.com/">GitHub</a> Reference: Strictly use Instructed Semantic Versioning for Repos and Logs!</strong></p>
+<p>This automatically adds the comments and release information to the created changelog which can be viewed <a href="changelog.html">HERE</a> in this documentation, or on the <a href="https://github.com/">GitHub</a> repository once it is pushed.</p>
+</div>
+<ul>
+<li><strong>2.3.13</strong> - You will be prompted to choose if to <code>Commit</code>, <code>Tag</code>, <code>Push</code> and <code>Create a Release to [Github](https://github.com/)</code> to the Changeset of the Project, type <strong><code>'Y'</code></strong> and press <span class="keys"><kbd class="key-enter">Enter</kbd></span> for each to accept.<br />
+<a class="glightbox" href="assets/img/screenshots/Preview2313.webp" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Preview2313" src="assets/img/screenshots/Preview2313.webp" title="click to enlarge" width="600" /></a></li>
+</ul>
+<hr />
+<div class="admonition note-license inline">
+<p class="admonition-title">License Notice</p>
+<p><a href="https://bluecoconut.ltd">Blue Coconut Multimedia Solutions Limited</a><br />
+52A Eccles Road, Grand Lagoon,<br />
+Mayaro, Trinidad and Tobago, W.I.<br />
+<a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#105;&#110;&#102;&#111;&#64;&#98;&#108;&#117;&#101;&#99;&#111;&#99;&#111;&#110;&#117;&#116;&#46;&#108;&#116;&#100;">&#105;&#110;&#102;&#111;&#64;&#98;&#108;&#117;&#101;&#99;&#111;&#99;&#111;&#110;&#117;&#116;&#46;&#108;&#116;&#100;</a>  </p>
+<hr />
+<p>All Rights Reserved under the:<br />
+<a href="license.html">MIT License (2023)</a><br />
+<a class="glightbox" href="assets/img/BCMSL%20LOGO%20DARK.svg#only-light" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="BCMSL" src="assets/img/BCMSL%20LOGO%20DARK.svg#only-light" width="50px" /></a> <a class="glightbox" href="assets/img/BCMSL%20LOGO%20LIGHT.svg#only-dark" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="BCMSL" src="assets/img/BCMSL%20LOGO%20LIGHT.svg#only-dark" width="50px" /></a></p>
+</div>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      Last update:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-05-24T06:17:51+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-05-24</span>
+      
+        <br>
+        Created:
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-05-24T06:17:51+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-05-24</span>
+      
+    
+  </small>
+</div>
+
+
+
+
+
+                
+
+<hr>
+<aside class=md-source-file>
+  <!-- Repository Information -->
+  <small><a href="https://github.com/bluecoconutltd">GitHub Repository</a> Information for Data Transparency</small><br>
+
+  <!-- Repository - Last Update -->
+  <span class=md-source-file__fact>
+    <span class=md-icon title="Last update">
+      <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24">
+        <path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z" />
+      </svg>
+    </span>
+    
+    Last update:
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-05-24T06:17:51+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-05-24</span>
+  </span>
+  
+  <!-- Repository - Date Created -->
+  <span class=md-source-file__fact>
+    <span class=md-icon title=Created>
+      <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24">
+        <path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z" />
+      </svg>
+    </span>
+    
+    Created:
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-05-24T06:17:51+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-05-24</span>
+    
+    
+  </span>
+  
+  <span class=md-source-file__fact>
+    <!-- Repository - Contributors -->
+    <span class=md-icon title=Contributors>
+      <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24">
+        <path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2Z" />
+      </svg>
+    </span>
+      <span>GitHub</span>
+    <nav><a href="" class=md-author title="AnillMaraj"><img src="https://avatars.githubusercontent.com/u/103867764?size=60" alt="AnillMaraj"></a></nav>
+  </span>
+</aside>
+<hr>
+
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="create.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: 1. Create Project" rel="prev">
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                1. Create Project
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="modify.html" class="md-footer__link md-footer__link--next" aria-label="Next: 3. Modify Project" rel="next">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                3. Modify Project
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Blue Coconut Multimedia Solutions Limited © 2023
+    </div>
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://twitter.com/bluecoconutltd" target="_blank" rel="noopener" title="Blue Coconut Multimedia Solutions Limited" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://linkedin.com/bluecoconutltd" target="_blank" rel="noopener" title="Blue Coconut Multimedia Solutions Limited" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://facebook.com/bluecoconutltd" target="_blank" rel="noopener" title="Blue Coconut Multimedia Solutions Limited" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://instagram.com/bluecoconutltd" target="_blank" rel="noopener" title="Blue Coconut Multimedia Solutions Limited" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://github.com/bluecoconutltd" target="_blank" rel="noopener" title="Blue Coconut Multimedia Solutions Limited" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+
+  
+
+
+
+
+<h4>Cookie Consent</h4>
+<p>We use cookies to recognize your repeated visits and preferences, as well as to measure the effectiveness of our documentation and whether users find what they're searching for. With your consent, you're helping us to make our documentation better.</p>
+<input class="md-toggle" type="checkbox" id="__settings" >
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+      
+      
+        
+        
+      
+      <li class="task-list-item">
+        <label class="task-list-control">
+          <input type="checkbox" name="analytics" >
+          <span class="task-list-indicator"></span>
+          Google Analytics
+        </label>
+      </li>
+    
+      
+      
+        
+        
+      
+      <li class="task-list-item">
+        <label class="task-list-control">
+          <input type="checkbox" name="github" checked>
+          <span class="task-list-indicator"></span>
+          GitHub
+        </label>
+      </li>
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Accept</button>
+    
+    
+    
+  
+    
+    
+    
+      <label class="md-button" for="__settings">Manage settings</label>
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout(function(){document.querySelector("[data-md-component=consent]").hidden=!1},250);var action,form=document.forms.consent;for(action of["submit","reset"])form.addEventListener(action,function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map(function(e){return[e,!0]}))),location.hash="",location.reload()})</script>
+    
+    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.instant", "navigation.tabs.sticky", "navigation.sections", "navigation.path", "navigation.prune", "navigation.indexes", "navigation.top", "navigation.footer", "toc.integrate", "search.suggest", "search.highlight", "content.action.edit", "content.code.copy", "content.code.annotate", "content.tabs.link", "content.tooltips"], "search": "assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.c2be25ad.min.js"></script>
+      
+        <script src="js/timeago.min.js"></script>
+      
+        <script src="js/timeago_mkdocs_material.js"></script>
+      
+        <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+      
+        <script src="assets/js/tablesort.js"></script>
+      
+        <script src="assets/js/main.js"></script>
+      
+    
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>
