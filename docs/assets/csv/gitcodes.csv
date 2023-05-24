@@ -1,0 +1,9 @@
+﻿col1,col2,col3
+Deprec: <commit message>,r1c2,r1c3
+Docs: ,r2c2,r2c3
+Feat: ,Feature,r3c3
+Fix: ,Fix: ,r3c3
+Int:,Integrated:,r3c3
+Roll:,Rollback:,r3c3
+Refactor:,Refactored,r3c3
+Update:,Update,r3c3

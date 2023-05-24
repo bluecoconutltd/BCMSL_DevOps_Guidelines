@@ -1,0 +1,181 @@
+﻿[data-md-color-scheme="BCMSL_LIGHT"] {
+    /* Change Navbar Color */
+    --md-primary-fg-color: #005acc;
+    /* Change Color */
+    --md-primary-fg-color--light: #003A82;
+    /* Change Color */
+    --md-primary-fg-color--dark: #0048A3;
+    /* Change Background Color */
+    --md-primary-bg-color: #ffffff;
+    /* Change Color */
+    --md-primary-bg-color--light: #002553;
+    /* Change Color */
+    --md-accent-fg-color: #005acc;
+    /* Change Color */
+    --md-accent-fg-color--transparent: #001e4231;
+    /* Change Color */
+    --md-accent-bg-color: #ffffff;
+    /* Change Color */
+    --md-accent-bg-color--light: #ffffffb3
+}
+
+[data-md-color-scheme=slate] {
+    --md-hue: 215;
+    /* Change Foreground Color */
+    --md-default-fg-color: hsla(var(--md-hue), 15%, 75%, 1);
+    /* Change Background Color */
+    --md-default-bg-color: hsla(var(--md-hue), 15%, 15%, 1);
+    /* Change Font Hover Color */
+    --md-accent-fg-color: hsla(var(--md-hue), 15%, 50%, 1);
+    /* Change Navbar Color */
+    --md-primary-fg-color: #2D333B;
+    /* Change Sidebar Repository BG Color */
+    --md-primary-fg-color--dark: #003A82;
+    /* Change Sidebar Font Hover Color */
+    --md-typeset-a-color: #005acc;
+    /* Change Code Background Color */
+    --md-code-bg-color: #001E42
+}
+
+[dir=ltr] .md-source-file__fact {
+    margin-right: .6rem
+}
+
+[dir=rtl] .md-source-file__fact {
+    margin-left: .6rem
+}
+
+.md-source-file__fact {
+    align-items: center;
+    color: var(--md-default-fg-color--light);
+    display: inline-flex;
+    font-size: .68rem;
+    gap: .3rem
+}
+
+.md-source-file__fact .md-icon {
+    flex-shrink: 0;
+    margin-bottom: .05rem
+}
+
+[dir=ltr] .md-source-file__fact .md-author {
+    float: left
+}
+
+[dir=rtl] .md-source-file__fact .md-author {
+    float: right
+}
+
+.md-source-file__fact .md-author {
+    margin-right: .2rem
+}
+
+.md-source-file__fact svg {
+    width: .9rem
+}
+
+.md-content__inner>pre code {
+    border-radius: 10
+}
+
+.md-typeset .md-author {
+    display: block;
+    flex-shrink: 0;
+    height: 1.6rem;
+    overflow: hidden;
+    position: relative;
+    transition: color 125ms, transform 125ms;
+    width: 1.6rem
+}
+
+.md-typeset .md-author img {
+    border-radius: 100%;
+    display: block
+}
+
+.md-typeset .md-author--more {
+    background: var(--md-default-fg-color--lightest);
+    color: var(--md-default-fg-color--lighter);
+    font-size: .6rem;
+    font-weight: 700;
+    line-height: 1.6rem;
+    text-align: center
+}
+
+.md-typeset .md-author--long {
+    height: 2.4rem;
+    width: 2.4rem
+}
+
+.md-typeset a.md-author {
+    transform: scale(1)
+}
+
+.md-typeset a.md-author img {
+    filter: grayscale(100%) opacity(75%);
+    transition: filter 125ms
+}
+
+.md-typeset a.md-author:focus,
+.md-typeset a.md-author:hover {
+    transform: scale(1.1);
+    z-index: 1
+}
+
+.md-typeset a.md-author:focus img,
+.md-typeset a.md-author:hover img {
+    filter: grayscale(0)
+}
+
+.md-typeset code {
+    background-color: var(--md-code-bg-color);
+    border-radius: 0.1rem;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    font-size: .85em;
+    padding: 0 0.2941176471em;
+    word-break: break-word;
+}
+
+:root {
+    --md-admonition-icon--note-github: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"/></svg>')
+}
+
+.md-typeset .admonition.note-github,
+.md-typeset details.note-github {
+    border-color: rgb(119, 63, 198);
+}
+
+.md-typeset .note-github>.admonition-title,
+.md-typeset .note-github>summary {
+    background-color: rgba(119, 63, 198, 0.1);
+}
+
+.md-typeset .note-github>.admonition-title::before,
+.md-typeset .note-github>summary::before {
+    background-color: rgb(119, 63, 198);
+    -webkit-mask-image: var(--md-admonition-icon--note-github);
+    mask-image: var(--md-admonition-icon--note-github);
+}
+
+
+:root {
+    --md-admonition-icon--note-license: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 10a3.04 3.04 0 0 1 3-3 3.04 3.04 0 0 1 3 3 3.04 3.04 0 0 1-3 3 3.04 3.04 0 0 1-3-3m3 9 4 1v-3.08A7.54 7.54 0 0 1 12 18a7.54 7.54 0 0 1-4-1.08V20m4-16a5.78 5.78 0 0 0-4.24 1.74A5.78 5.78 0 0 0 6 10a5.78 5.78 0 0 0 1.76 4.23A5.78 5.78 0 0 0 12 16a5.78 5.78 0 0 0 4.24-1.77A5.78 5.78 0 0 0 18 10a5.78 5.78 0 0 0-1.76-4.26A5.78 5.78 0 0 0 12 4m8 6a8.04 8.04 0 0 1-.57 2.8A7.84 7.84 0 0 1 18 15.28V23l-6-2-6 2v-7.72A7.9 7.9 0 0 1 4 10a7.68 7.68 0 0 1 2.33-5.64A7.73 7.73 0 0 1 12 2a7.73 7.73 0 0 1 5.67 2.36A7.68 7.68 0 0 1 20 10Z"/></svg>')
+}
+
+.md-typeset .admonition.note-license,
+.md-typeset details.note-license {
+    border-color: rgba(0,90,204,1);
+}
+
+.md-typeset .note-license>.admonition-title,
+.md-typeset .note-license>summary {
+    background-color: rgba(0, 88, 204, 0.1);
+}
+
+.md-typeset .note-license>.admonition-title::before,
+.md-typeset .note-license>summary::before {
+    background-color: rgba(0,90,204,1);
+    -webkit-mask-image: var(--md-admonition-icon--note-license);
+    mask-image: var(--md-admonition-icon--note-license);
+}

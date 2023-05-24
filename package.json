@@ -1,0 +1,91 @@
+{
+  "dependencies": {
+    "conventional-changelog": "^3.1.25",
+    "release-it": "^15.10.3",
+    "@commitlint/cli": "^17.6.3",
+    "@commitlint/config-conventional": "^17.6.3",
+    "@release-it/conventional-changelog": "^5.1.1",
+    "husky": "^8.0.3"
+  },
+  "scripts": {
+    "release": "release-it"
+  },
+  "release-it": {
+    "git": {
+      "requireCleanWorkingDir": false,
+      "commitMessage": "chore: Release v${version}",
+      "tagName": "v${version}",
+      "tagAnnotation": "Release v${version}",
+      "tagArgs": [
+        "-s"
+      ],
+      "pushArgs": [
+        "--follow-tags"
+      ]
+    },
+    "github": {
+      "release": true,
+      "releaseName": "Release ${version}",
+      "tokenRef": "GITHUB_TOKEN"
+    },
+    "npm": {
+      "publish": false
+    },
+    "plugins": {
+      "@release-it/conventional-changelog": {
+        "infile": "docs/changelog.md",
+        "preset": {
+          "name": "conventionalcommits",
+          "types": [
+            {
+              "type": "add",
+              "section": "Added:"
+            },
+            {
+              "type": "del",
+              "section": "Deleted:"
+            },
+            {
+              "type": "deprec",
+              "section": "Deprecated:"
+            },
+            {
+              "type": "docs",
+              "section": "Documentation:"
+            },
+            {
+              "type": "feat",
+              "section": "Features:"
+            },
+            {
+              "type": "fix",
+              "section": "Bug Fixes:"
+            },
+            {
+              "type": "int",
+              "section": "Integrated:"
+            },
+            {
+              "type": "renamed",
+              "section": "Renamed:"
+            },
+            {
+              "type": "roll",
+              "section": "Rollback:"
+            },
+            {
+              "type": "refactor",
+              "section": "Refactored:"
+            },
+            {
+              "type": "update",
+              "section": "Updated:"
+            },
+            {}
+          ]
+        }
+      }
+    }
+  },
+  "version": "1.0.0"
+}
