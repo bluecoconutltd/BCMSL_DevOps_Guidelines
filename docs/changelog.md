@@ -1,3 +1,7 @@
+
+
+## 2.0.0 (2023-05-24)
+
 # [**:material-github::material-file-document-alert-outline:**](https://github.com/bluecoconutltd/BCMSL_DEV_Guidelines/blob/main/docs/changelog.md)
 
 ***
@@ -17,4 +21,4 @@
     --------------------------
     All Rights Reserved under the:  
     [MIT License (2023)](license.md)  
-    ![BCMSL](assets/img/BCMSL LOGO DARK.svg#only-light){ width="50px" } ![BCMSL](assets/img/BCMSL LOGO LIGHT.svg#only-dark){ width="50px" }  
+    ![BCMSL](assets/img/BCMSL LOGO DARK.svg#only-light){ width="50px" } ![BCMSL](assets/img/BCMSL LOGO LIGHT.svg#only-dark){ width="50px" }
