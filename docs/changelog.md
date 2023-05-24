@@ -1,5 +1,7 @@
 
 
+## 1.0.0 (2023-05-24)
+
 ## 2.0.0 (2023-05-24)
 
 # [**:material-github::material-file-document-alert-outline:**](https://github.com/bluecoconutltd/BCMSL_DEV_Guidelines/blob/main/docs/changelog.md)
